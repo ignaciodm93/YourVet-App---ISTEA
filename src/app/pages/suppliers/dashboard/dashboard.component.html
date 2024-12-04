@@ -1,0 +1,93 @@
+<body class="vet-body" style="margin-left: 11%;  overflow-y: scroll;
+max-height: 100%;">
+    <div class="container">
+        <main id="main" style="margin-left: 17px;">
+            <!-- Gráficos KPI-->
+            <div class="cards">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">{{establecimientos}}</div>
+                        <div class="card-name">Establecimientos</div>
+                    </div>
+                    <div class="icon-box">
+                        <img src="../../../../assets/images/clinic.png" alt="establecimientos">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">{{especialistas}}</div>
+                        <div class="card-name">Especialistas</div>
+                    </div>
+                    <div class="icon-box">
+                        <img src="../../../../assets/images/doctor.png" alt="especialistas">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">{{clientes}}</div>
+                        <div class="card-name">Clientes</div>
+                    </div>
+                    <div class="icon-box">
+                        <img src="../../../../assets/images/customer.png" alt="clientes">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">{{pacientes}}</div>
+                        <div class="card-name">Pacientes</div>
+                    </div>
+                    <div class="icon-box">
+                        <img src="../../../../assets/images/pet.png" alt="mascotas">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">{{atenciones}}</div>
+                        <div class="card-name">Atenciones</div>
+                    </div>
+                    <div class="icon-box">
+                        <img src="../../../../assets/images/atenciones.png" alt="atenciones">
+                    </div>
+                </div>
+            </div>
+
+            <div class="charts">
+                <!-- Gráfico de lineas-->
+                <div class="chart" style="width: fit-content">
+                    <h2>Atenciones a 12 meses</h2>
+                    <div>
+                        <ngx-charts-area-chart
+  id="grafico"
+  [view]="viewLinea"
+  [scheme]="colorScheme"
+  [legend]="legend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxis]="xAxis"
+  [yAxis]="yAxis"
+  [xAxisLabel]="xAxisLabel"
+  [yAxisLabel]="yAxisLabel"
+  [timeline]="timeline"
+  [results]="datosGraficolinea"
+  (select)="onSelect($event)"
+>
+</ngx-charts-area-chart>
+
+                    </div>
+                </div>
+                <!-- Gráfico de torta-->
+                <div class="chart doughnut-chart">
+                    <h2>Atencion por especialidad</h2>
+                    <div>
+                        <ngx-charts-pie-chart [view]="viewTorta" [scheme]="colorSchemeTorta" [results]="datosGraficoTorta"
+                            [gradient]="gradientTorta" [legend]="showLegendTorta" [legendPosition]="setLegend(legendPositionTorta)"
+                            [labels]="showLabelsTorta" [doughnut]="isDoughnutTorta" [animations]="animationsTorta"
+                            [arcWidth]="arcWidthTorta" [tooltipDisabled]="tooltipDisabledTorta" (select)="onSelect($event)"
+                            (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+                        </ngx-charts-pie-chart>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>

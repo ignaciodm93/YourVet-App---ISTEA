@@ -1,0 +1,262 @@
+<div class="modal-custom" [ngClass]="{'visible': mostrarCartel}" style="margin-top: 0px; overflow: auto;">
+    <div class="modal-custom-content text-center">
+        <div class="modal-custom-header">
+            <h3 class="modal-customTitle"> {{modalTitle}} </h3>
+        </div>
+        <div class="modal-custom-body">
+            <h5> {{modalSubtitle}} </h5>
+            <p> {{modalTxt}} </p>
+            <ul style="list-style-type: none;">
+                <li *ngFor="let element of arrayList">
+                    <p class="elementOfArray">
+                        <i style="cursor: pointer;" class="fa-solid fa-diamond fa-xs"></i><strong> {{element}} </strong>
+                    </p>
+                </li>
+            </ul>
+            <!-- <div *ngIf="showInputText" class="row">
+                <div class="col-4">
+                    <mat-form-field>
+                        <mat-label>Vacunas:</mat-label>
+                        <mat-select #vac multiple>
+                            <mat-option (click)="agregarVacuna(v)" *ngFor="let v of vacunasList"
+                                [value]="v.id">{{v.descripcion}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="row" style="margin-bottom: 20px;">
+                    <div style="text-align: start;">
+                        <span *ngFor="let v of vacunasAplicadas" class="pill">
+                            <i style="cursor: pointer;" class="fa-regular fa-circle-xmark"
+                                (click)="removeSelectedVacuna(v)"></i>
+                            {{v.descripcion}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <mat-form-field>
+                        <mat-label>Prácticas:</mat-label>
+                        <mat-select #pras multiple>
+                            <mat-option (click)="agregarPractica(p)" *ngFor="let p of practicasList"
+                                [value]="p.id">{{p.descripcion}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="row" style="margin-bottom: 20px;">
+                    <div style="text-align: start;">
+                        <span *ngFor="let p of practicasAplicadas" class="pill">
+                            <i style="cursor: pointer;" class="fa-regular fa-circle-xmark "
+                                (click)="removeSelectedPractica(p)"></i>
+                            {{p.descripcion}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <mat-form-field>
+                        <mat-label>Antiparasitarios:</mat-label>
+                        <mat-select #ants multiple>
+                            <mat-option (click)="agregarAntiparasitario(a)" *ngFor="let a of antiparasitariosList"
+                                [value]="a.id">{{a.descripcion}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="row" style="margin-bottom: 20px;">
+                    <div style="text-align: start;">
+                        <span *ngFor="let a of antiparasitariosAplicados" class="pill">
+                            <i style="cursor: pointer;" class="fa-regular fa-circle-xmark" (click)="removeSelectedAntiparasitario(a)"></i>
+                            {{a.descripcion}}
+                        </span>
+                    </div>
+                </div>
+            </div> -->
+            <div id="box">
+            <!--Practicas-->
+            <div class="row">
+              <div style="text-align: left; margin-left: 15px;">
+              <mat-form-field>
+                  <mat-label>Practicas</mat-label>
+                  <mat-select [(ngModel)]="selectedPractica" [disabled]="isPracticaDropdownDisabled">
+                    <mat-option (click)="onPracticaSelected()" *ngFor="let a of practicasList" [value]="a.id">
+                      {{ a.descripcion }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                  <div class="col-4">
+                <div *ngIf="hasPracticasSeleccionadasData">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Prácticas</th>
+                        <th>Fecha de aplicación</th>
+                        <th>Fecha de vencimiento</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let row of practicasTableData">
+                        <td><input class="inputmargin" [disabled]="true" [(ngModel)]="row.Practica" /></td>
+                        <td><input class="inputmargin" [disabled]="true" [ngModel]="row.Aplicacion | date: 'd MMM y'" (ngModelChange)="row.Aplicacion = $event"/></td>
+                        <td>
+                            <mat-form-field class="datePick" (click)="setPracticaDate($event, row.id)">
+                              <input [value]="row.Vencimiento" (dateInput)="setPracticaDate($event, row.id)" class="inp" matInput [matDatepicker]="picker">
+                              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                              <mat-datepicker  #picker></mat-datepicker>
+                            </mat-form-field>
+                          </td>
+                        <i style="padding: 13px; cursor: pointer; margin-top: 8px" class="fa-solid fa-trash" (click)="removePractica(row.id)"></i>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              </div>
+          </div>
+
+          <!--Vacunas-->
+          <div class="row">
+            <div style="text-align: left; margin-left: 15px;">
+            <mat-form-field>
+                <mat-label>Vacunas</mat-label>
+                <mat-select [(ngModel)]="selectedVacuna" [disabled]="isVacunaDropdownDisabled">
+                  <mat-option (click)="onVacunaSelected(a)" *ngFor="let a of vacunasList" [value]="a.id">
+                    {{ a.descripcion }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="row">
+                <div class="col-4">
+              <div *ngIf="hasVacunasSeleccionadasData">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Vacuna</th>
+                      <th>Fecha de aplicación</th>
+                      <th>Fecha de vencimiento</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let row of vacunasTableData">
+                      <td><input class="inputmargin" [disabled]="true" [(ngModel)]="row.Vacuna" /></td>
+                      <td><input class="inputmargin" [disabled]="true" [ngModel]="row.Aplicacion | date: 'd MMM y'" (ngModelChange)="row.Aplicacion = $event"/></td>
+                      <td>
+                          <mat-form-field class="datePick">
+                            <input [value]="row.Vencimiento" (dateInput)="setVacunaDate($event, row.id)" class="inp" matInput [matDatepicker]="picker">
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                          </mat-form-field>
+                        </td>
+                      <i style="padding: 13px; cursor: pointer; margin-top: 8px" class="fa-solid fa-trash" (click)="removeVacuna(row.id)"></i>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            </div>
+        </div>
+
+
+          <!--Antiparasitarios-->
+            <div class="row">
+                <div style="text-align: left; margin-left: 15px;">
+                <mat-form-field>
+                    <mat-label>Antiparasitarios</mat-label>
+                    <mat-select [(ngModel)]="selectedAntiparasitario" [disabled]="isAntiparasitarioDropdownDisabled">
+                      <mat-option (click)="onAntiparasitarioSelected()" *ngFor="let a of antiparasitariosList" [value]="a.id">
+                        {{ a.descripcion }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                  <div *ngIf="hasAntiparasitariosSeleccionadosData">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Antiparasitario</th>
+                          <th>Fecha de aplicación</th>
+                          <th>Fecha de vencimiento</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let row of antiparasitarioTableData">
+                          <td><input class="inputmargin" [disabled]="true" [(ngModel)]="row.AntiParasitario" /></td>
+                          <td><input class="inputmargin" [disabled]="true" [ngModel]="row.Aplicacion | date: 'd MMM y'" (ngModelChange)="row.Aplicacion = $event"/></td>
+                          <td>
+                              <mat-form-field class="datePick">
+                                <input [value]="row.Vencimiento" (dateInput)="setAntiparasitarioDate($event, row.id)" class="inp" matInput [matDatepicker]="picker">
+                                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                              </mat-form-field>
+                            </td>
+                          <i style="padding: 13px; cursor: pointer; margin-top: 8px" class="fa-solid fa-trash" (click)="removeAntiparasitario(row.id)"></i>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                </div>
+            </div>
+
+            <!--Enferemdades y dolencias-->
+            <div class="row">
+                <div style="text-align: left; margin-left: 15px;">
+                <mat-form-field>
+                    <mat-label>Enfermedad</mat-label>
+                    <mat-select [(ngModel)]="selectedEnfermedad" [disabled]="isEnfermedadDropdownDisabled">
+                      <mat-option (click)="onEnferemedadSelected()" *ngFor="let a of enfermedadesList" [value]="a.id">
+                        {{ a.descripcion }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                  <div *ngIf="hasEnfermedadesSeleccionadasData">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Enfermedad</th>
+                          <th>Dolencia</th>
+                          <th>Tratamiento</th>
+                          <th>Observación</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let row of enfermedadesTableData">
+                          <td><input class="inputmargin fixx" [disabled]="true" [(ngModel)]="row.Enfermedad" /></td>
+                          <td><input class="inputmargin fixx" (input)="setDol(row.id, $event)" /></td>
+                          <td><input class="inputmargin fixx" (input)="setObs(row.id, $event)"  /></td>
+                          <td><input class="inputmargin fixx" (input)="setTrat(row.id, $event)"  /></td>
+                          <i style="padding: 13px; cursor: pointer;" class="fa-solid fa-trash" (click)="removeEnfermedad(row.Enfermedad)"></i>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                </div>
+            </div>
+          </div>
+            <input [(ngModel)]="currentTXT" (input)="chequearInput($event)" *ngIf="showInputText" type="text" id="descripcion" name="descripcion"
+                placeholder="Descripción de la atención realizada">
+        </div>
+        <div class="modal-custom-footer">
+            <div class="modal-customBtnGroup" role="group">
+                <button *ngIf="hasFirstBtn" type="button" class="btn btn-secondary modal-customBtnLeft commonMargins"
+                    (click)="close()"> {{cancelTxt}} </button>
+                <button *ngIf="hasSecondBtn" type="button" class="btn btn-primary modal-customBtnRight commonMargins"
+                    (click)="confirm()"> {{confirmTxt}} </button>
+                <button [disabled]="isSuccessDisabled" *ngIf="actionFsTxt" type="button"
+                    class="btn btn-success modal-customBtnRight commonMargins" (click)="actionComplete(actionFsTxt)">
+                    {{actionFsTxt}} </button>
+                <button *ngIf="actionScTxt" type="button" class="btn btn-danger modal-customBtnRight commonMargins"
+                    (click)="action(actionScTxt)"> {{actionScTxt}} </button>
+            </div>
+        </div>
+    </div>
+</div>

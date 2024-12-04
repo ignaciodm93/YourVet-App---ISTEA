@@ -1,0 +1,137 @@
+.cont {
+    width: 170vh;
+    left: 35vh;
+    position: fixed;
+}table {
+    width: 100%;
+  }
+  
+  tr.example-detail-row {
+    height: 0;
+  }
+  
+  tr.example-element-row:not(.example-expanded-row):hover {
+    background: whitesmoke;
+  }
+  
+  tr.example-element-row:not(.example-expanded-row):active {
+    background: #efefef;
+  }
+  
+  .example-element-row td {
+    border-bottom-width: 0;
+  }
+  
+  .example-element-detail {
+    overflow: hidden;
+    display: flex;
+  }
+  
+  .example-element-diagram {
+    min-width: 80px;
+    border: 2px solid black;
+    padding: 8px;
+    font-weight: lighter;
+    margin: 8px 0;
+    height: 104px;
+  }
+  
+  .example-element-symbol {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: normal;
+  }
+  
+  .example-element-description {
+    padding: 16px;
+  }
+  
+  .example-element-description-attribution {
+    opacity: 0.5;
+  }
+
+  ::ng-deep .mat-focus-indicator:hover {
+    background-color: #b3b3b3 !important;
+  }
+  
+  .vacunasContainer {
+    margin-right: 10px !important;
+  }
+
+
+  .blo {
+    display: block;
+    width: 100%;
+  }
+
+  .buttons {
+    width: 80px !important;
+    padding-right: 0px !important;
+  }
+
+  .cc {
+    margin-top: 10px;
+  }
+  
+  td {
+    padding-bottom: 0px;
+  }
+
+  .mat-column-name {
+    height: 100px;
+  }
+
+  mat-cell {
+    background-color: orangered;
+  }
+
+  .ovf {
+    /* overflow-y: scroll;
+    height: 100vh; */
+  }
+
+  ::ng-deep ::-webkit-scrollbar {
+    width: 2px;
+    height: 1px;
+    background-color: rgb(178, 218, 243);
+    position: fixed;
+    right: 0px
+  }
+  
+  ::ng-deep::-webkit-scrollbar-thumb {
+    background: navy;
+    width: 5px;
+    position: fixed;
+    right: 0px
+  }
+  
+  ::ng-deep ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+}
+
+.vet-body {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.ovf {
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.cont {
+  width: 170vh;
+  left: 35vh;
+  position: fixed;
+}
+
+th {
+  font-size: 15px;
+}

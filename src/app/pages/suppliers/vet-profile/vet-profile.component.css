@@ -1,0 +1,187 @@
+.btn {
+    border-radius: 0%;
+}
+
+.mainTitle {
+    font-size: 50px;
+}
+
+.mycard {
+    background-color: #bac9ff87;
+    padding: 5px;
+    border-radius: 20px 0px 20px 0px;
+    width: 100%;
+    border: solid 2px navy;
+}
+
+.innerLi {
+    width: 90%;
+    border-radius: 10px;
+    padding: 3px;
+    padding-left: 5px;
+}
+
+.innerLi:hover{
+    transition:  all 500ms ease-in;
+    /* background-color: #6695fa30; */
+}
+
+h2{
+    padding-top: 10px;
+    padding-left: 10px;
+    text-decoration: underline;
+}
+
+.fixWidth {
+    width: 100%;
+    text-align: center;
+}
+
+::ng-deep ::-webkit-scrollbar {
+    width: 2px;
+    height: 1px;
+    background-color: rgb(178, 218, 243);
+  }
+  
+  ::ng-deep::-webkit-scrollbar-thumb {
+    background: navy;
+    width: 5px;
+  }
+  
+  ::ng-deep ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.containerList {
+    list-style-type: none; overflow-y: scroll; max-height: 400px;
+}
+
+.marginRow {
+    margin-top: 20px;
+}
+
+::ng-deep .errorToast {
+    border: solid 3px #800000;
+    background-color: #ebfff3 !important;
+    color: #334635 !important;
+}
+::ng-deep .okToast {
+    border: solid 3px #008025;
+    background-color: #ebfff3 !important;
+    color: #334635 !important;
+}
+.icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.iconFirstEdit {
+    font-size: 20px;
+    vertical-align: middle;
+}
+
+.iconFirstEditContainer {
+    background: #bce7bc;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 50%;
+    border: solid 3px #089f3d;
+    cursor: pointer;
+}
+
+.textFirstEdit {
+    display: inline;
+    margin-left: 15px;
+    vertical-align: middle;
+    font-size: 25px;
+}
+
+.itemSucursal {
+    background-color: #f2f9ff;
+    border-radius: 0px;
+    border: solid 1px navy;
+    font-size: 15px;
+    width: 100%;
+    margin-left: -20px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.itemSucursal:hover {
+    transition: all ease 500ms;
+    background-color: #dffffe;
+}
+
+.iconHouse {
+    display: inline;
+    margin-left: -25px;
+    margin-right: 7px;
+}
+
+.matSlideToggle {
+    height: 70%;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.noInfo {
+    margin-top: -2px;
+    padding: 5px;
+}
+
+.espBtn {
+    color: rgb(82 72 255);
+    cursor: pointer;
+}
+::ng-deep .warningToast {
+    border: solid 3px #807a00;
+    background-color: rgb(252, 249, 192) !important;
+    color: #334635 !important;
+}
+
+.fix {
+    margin-bottom: 0px;
+}
+
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip-icon {
+    color: #FF0000;
+    cursor: pointer;
+    animation: flickerAnimation 2s infinite; 
+  }
+  
+  .tooltip-text {
+    visibility: hidden;
+    width: 300px;
+    background-color: #2e6486;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -135px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  @keyframes flickerAnimation {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.2;
+    }
+  }

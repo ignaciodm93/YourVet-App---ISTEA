@@ -1,0 +1,38 @@
+<div class="conteiner">
+    <div class="row">
+        <div class="col-3">
+            <div class="option cliente" *ngIf="userType == 'cliente'; else Block" style="max-width: 192px;">
+                <ul>
+                    <!-- <li style="font-size: 15px;">{{userName}}</li> -->
+                    <li (click)="redirect('user')"><i class="fas fa-user ic"></i><span class="txts">Perfil</span></li>
+                    <li (click)="redirect('pets')"><i class="fas fa-paw ic"></i><span class="txts">Mascotas</span></li>
+                    <li (click)="redirect('turn')"><i class="fas fa-calendar ic"></i><span class="txts">Turnos</span></li>
+                    <li (click)="redirect('setting')"><i class="fas fa-folder ic"></i><span class="txts">Historia Clinica</span></li>
+                    <li (click)="redirect('logout')" class="logout lismall">
+                        <i class="fa-solid fa-right-from-bracket"></i> <span class="txts">Cerrar sesión</span>
+                    </li>
+                    <li (click)="redirect('notificaciones')">
+                        <mat-icon class="not" matBadge="{{notificationCount}}" matBadgeColor="warn">notifications</mat-icon> Notificaciones
+                    </li>
+                </ul>
+            </div>
+            <ng-template #Block>
+                <div class="option vet" style="max-width: 192px;">
+                    <ul>
+                        <li (click)="redirect('shifts')"><i class="fas fa-calendar"></i>Turnos</li>
+                        <li (click)="redirect('vets')"><i class="fas fa-user-doctor"></i>Profesionales</li>
+                        <li (click)="redirect('medical-history')"><i class="fas fa-book-open"></i>Historiales médicos</li>
+                        <li (click)="redirect('vet-dasboard')"><i class="fa-sharp fa-solid fa-address-book"></i>Dashboard</li>
+                        <li (click)="redirect('vet-profile')"><i class="fas fa-house-medical"></i>Mi veterinaria</li>
+                        <li (click)="logout()" class="logout">
+                            <i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión
+                        </li>
+                        <li  (click)="redirect('notifications')">
+                            <mat-icon class="not" matBadge="{{notificationCount}}" matBadgeColor="warn">notifications</mat-icon> Notificaciones
+                        </li>
+                    </ul>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>

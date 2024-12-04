@@ -1,0 +1,22 @@
+.dropzone {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .dropzone img {
+    max-width: 100%;
+    max-height: 200px;
+    margin-top: 10px;
+  }
+  
+  .dropzone input {
+    display: none;
+  }
+  
+  .inp {
+    color: #b3b3b3;
+    font-size: 14px;
+    display: contents;
+}

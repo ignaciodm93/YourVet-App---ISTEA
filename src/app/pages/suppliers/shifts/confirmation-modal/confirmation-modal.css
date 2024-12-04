@@ -1,0 +1,180 @@
+.modal-custom {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.open {
+    display: flex;
+}
+
+.modal-custom-content {
+    animation: fadeInOut 0.5s ease-out;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    /* width: 600px; */
+    width: 70%;
+    height: fit-content !important;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 2px solid #cae8f1
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.btn-primary {
+    width: auto;
+}
+
+.cartel {
+    display: none;
+    padding: 10px;
+    background-color: #F0F0F0;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.visible {
+    display: block;
+}
+
+.modal-custom-header {
+    display: block;
+}
+
+.modal-customBtn {
+    margin-right: 1%;
+    margin-left: 1%;
+    background-color: aliceblue;
+    border: solid 1px navy;
+}
+
+.modal-customBtnGroup {
+    width: 100%;
+}
+
+.btn {
+    border-radius: 0%;
+}
+
+.elementOfArray {
+    text-align: left;
+}
+
+.commonMargins {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+#descripcion {
+    width: 100%;
+}
+
+.modal-customTitle {
+    font-family: math;
+    background-color: #bbebb4b5;
+    border-radius: 3px;
+}
+
+.modal-custom-body {
+    font-family: math;
+}
+
+.pill {
+    background-color: #3bcfff;
+    color: white;
+    padding: 5px 5px 4px 5px;
+    border-radius: 15px 15px 15px 15px;
+    white-space: nowrap;
+    margin: 1px;
+    display: inline-block;
+}
+
+.pill:hover {
+    transition: all ease 700ms;
+    background-color: #2093b9;
+    outline: solid 1px black;
+}
+
+::ng-deep .okToast {
+    border: solid 3px #008025;
+    background-color: #ebfff3 !important;
+    color: #334635 !important;
+}
+
+.inputmargin {
+    margin-right: 10px;
+}
+
+::ng-deep mat-datepicker-toggle > button:hover {
+    background-color: rgb(205, 205, 205) !important;
+}
+
+::ng-deep .datePick {
+    margin-top: -19px;
+    margin-bottom: 5px;
+}
+
+::ng-deep .inp {
+    position: absolute;
+    margin-top: 15px !important;
+    margin-left: 80px !important;
+    width: -webkit-fill-available !important;
+}
+
+::ng-deep #mat-datepicker-0 > div > mat-month-view > table > tbody > button:hover {
+    background-color: rgb(205, 205, 205) !important;
+}
+
+::ng-deep mat-datepicker > div > mat-month-view > table > tbody > button:hover {
+    background-color: rgb(205, 205, 205) !important;
+}
+
+#box {
+    padding-left: 10px;
+    border: solid 2px #e4f0f0;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+}
+
+::ng-deep .infoToast {
+    border: solid 3px #005580;
+    background-color: rgb(192, 251, 252) !important;
+    color: #334635 !important;
+}
+
+.fixx {
+    width: 150px;
+}

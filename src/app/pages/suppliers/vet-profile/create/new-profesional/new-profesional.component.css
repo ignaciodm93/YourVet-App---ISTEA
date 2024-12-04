@@ -1,0 +1,137 @@
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.open {
+    display: flex;
+}
+
+.modal-content {
+    animation: fadeInOut 0.5s ease-out;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    width: 600px;
+    height: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    outline: solid 2px navy;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.btn-primary {
+    width: auto;
+}
+
+.cartel {
+    display: none;
+    padding: 10px;
+    background-color: #F0F0F0;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.visible {
+    display: block;
+}
+
+.modal-header {
+    display: block;
+}
+
+.modalBtnLeft {
+    margin-right: 2%;
+}
+
+.modalBtnRight {
+    margin-left: 2%;
+}
+
+.modalBtnGroup {
+    width: 100%;
+}
+
+.btn {
+    border-radius: 0%;
+}
+
+.form-group {
+    margin-top:5px;
+    margin-bottom: 5px;
+}
+
+.mainForm {
+    margin-bottom: 10px;
+}
+
+.errorMsg {
+    color: #c50606;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mediosDePago {
+    text-align: justify;
+    padding-left: auto;
+    padding-right: auto;
+    width: fit-content;
+    display: inline-block;
+}
+
+.fccustom {
+    padding-left: 10px
+}
+
+.form-control {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+::ng-deep .errorToast {
+    border: solid 3px #800000;
+    background-color: #ffebeb !important;
+    color: #334635 !important;
+}
+::ng-deep .okToast {
+    border: solid 3px #008025;
+    background-color: #ebfff3 !important;
+    color: #334635 !important;
+}
+::ng-deep .infoToast {
+    border: solid 3px #005580;
+    background-color: rgb(192, 251, 252) !important;
+    color: #334635 !important;
+}

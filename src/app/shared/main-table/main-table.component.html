@@ -1,0 +1,45 @@
+<body class="">
+    <div class="container mt-4">
+        <h2> </h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr [class]="classPrefix + '-mtfont'">
+                    <th class="head" [class]="classPrefix + '-mtheader'" *ngFor="let col of colHeaders"> {{col | titlecase }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of displayedList">
+                    <ng-container *ngFor="let property of getPropertyArray(item)">
+                        <td *ngIf="property.key != 'actions'">{{ property.value }}</td>
+                        <td *ngIf="property.key == 'actions'">
+                            <div class="dropdown" style="text-align: center;">
+                                <div *ngIf="property.value.length > 0; else elseBlock">
+                                    <!-- <i style="cursor: pointer;" data-bs-toggle="dropdown" aria-expanded="false" class="fa-solid fa-ellipsis-vertical"></i>
+                                    <ul class="dropdown-menu">
+                                        <li *ngFor="let act of property.value" style="margin-right: 100px;">
+                                            <a class="dropdown-item" (click)="onAction(item)"> {{act}} </a>
+                                        </li>
+                                    </ul> -->
+                                    <i class="fa-solid fa-circle-info iconfo" (click)="onAction(item)"></i>
+                                </div>
+                                <ng-template #elseBlock>
+                                    <div *ngIf="property.value.length === 0">
+                                        <!-- <i class="fa-solid fa-minus"></i> -->
+                                        Sin acciones
+                                    </div>
+                                </ng-template>
+                            </div>
+                        </td>
+                    </ng-container>
+                </tr>
+            </tbody>
+        </table>
+        <nav class="mtnav" aria-label="Page navigation">
+            <ul class="pagination pagination-lg">
+                <li class="page-item" *ngFor="let _ of [].constructor(calculatePagesAmount()); let i = index">
+                    <a class="page-link" (click)="pageChange(i+1)">{{ i + 1 }}</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</body>

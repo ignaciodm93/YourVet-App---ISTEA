@@ -1,0 +1,65 @@
+.matmenu {
+    background-color: red;
+    overflow: visible;
+}
+
+.vet-mtheader {
+    background-color: #b59eed;
+}
+
+.vet-mttr {
+    font-weight: bold !important;
+}
+
+.vet-mttr :hover {
+    background-color: yellowgreen;
+}
+
+.vet-mtfont {
+    font-size: 20px;
+}
+
+.mtnav {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.mtnav :hover {
+    background-color: #d1d1d1;
+    color: rgb(51, 51, 51);
+    transition: all ease 300ms;
+}
+
+.table-bordered tr {
+    height: 5px !important;
+}
+
+.noActions {
+    background-color: #c3c3c3;
+}
+body {
+    background-color: transparent;
+}
+
+table > tbody > tr > td {
+padding-top: 5px;
+padding-bottom: 5px;
+}
+
+th:nth-child(1){
+    width: 7%;
+}
+
+body > div > table > thead > tr > th:last-of-type {
+    width: 11%;
+}
+
+.iconfo {
+    cursor: pointer; color:#00019b;
+}
+
+.iconfo:hover {
+    transition: all ease 500ms;
+    color: rgb(89, 172, 224);
+}

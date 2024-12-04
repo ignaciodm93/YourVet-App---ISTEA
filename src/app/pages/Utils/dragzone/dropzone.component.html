@@ -1,0 +1,7 @@
+<div class="dropzone" (drop)="onFileDropped($event)" (dragover)="preventDefault($event)" (dragleave)="preventDefault($event)">
+    <input type="file" (change)="onFileSelected($event)"/>
+    <span class="inp" *ngIf="!imageBase64">El archivo debe ser en formato PNG.</span>
+    <p *ngIf="imageBase64">Imagen cargada:</p>
+    <img *ngIf="imageBase64" [src]="imageBase64" alt="Imagen cargada" />
+</div>
+  

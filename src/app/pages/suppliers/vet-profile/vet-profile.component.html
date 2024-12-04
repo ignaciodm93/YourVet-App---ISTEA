@@ -1,0 +1,123 @@
+<body class="vet-body" style="    overflow-y: scroll;
+max-height: 100%;">
+    <div class="container mt-4">
+        <div>
+            <div class="mycard" style="position: relative; width: 170vh; left: 10vh; position: relative; padding-left: 2%;">
+                <div *ngIf="hasProfile; else elseBlock">
+                    <i class="fa-regular fa-pen-to-square icon iconFirstEditContainer" (click)="this.vetinfo.show()"></i>
+                <h3 class="mainTitle"> {{ vet.nombreVet }} </h3>
+                <h4 style="text-decoration: underline">Información de usuario:</h4>
+                <p *ngIf="vet.nombreUsuario != null" class="fix"><strong>Usuario:</strong> {{ vet.nombreUsuario }} </p>   
+                <p *ngIf="vet.nrodoc != null" class="fix"><strong>Documento:</strong> {{ vet.nrodoc }} </p>
+                <p *ngIf="vet.email != null" class="fix"><strong>Email:</strong> {{ vet.email }} </p>
+                <p *ngIf="vet.telefono != null" class="fix"><strong>Telefono:</strong> {{ vet.telefono }} </p>
+                <!-- <p *ngIf="vet.id != null" class="fix"><strong>Nro cliente:</strong> {{ vet.id }} </p> -->
+                <p *ngIf="vet.fechaUltimoLogin != null" class="fix"><strong>Último login:</strong> {{ vet.fechaUltimoLogin }} </p>
+                <p *ngIf="vet.fechaRegistro != null" class="fix"><strong>Fecha registro:</strong> {{ vet.fechaRegistro }} </p>
+                </div>
+                <div *ngIf="false" (click)="loadVetInfo()">
+                <div class="iconFirstEditContainer">
+                    <i class="fa-regular fa-pen-to-square iconFirstEdit"></i>
+                </div>
+                <p class="textFirstEdit">Cargar información personal</p>
+                </div>
+                <ng-template #elseBlock>
+                        <i class="fa-regular fa-pen-to-square icon iconFirstEditContainer noInfo" (click)="this.vetinfo.show()"></i><p class="textFirstEdit">Cargar información personal</p>
+                </ng-template>
+            </div>
+            <div class="row marginRow" style="width: 170vh; left: 10vh; position: relative;">
+                <!--col-4 antes-->
+                <div class="col-6">
+                    <div class="mycard">
+                    <h2>Sucursales:</h2> 
+                    <p style="margin-bottom: 0px; margin-left: 10px"><strong>Sucursales registradas</strong></p>
+                    <ul class="containerList">
+                        <li *ngFor="let e of establecimientos" class="mysubcard">
+                            
+                            <div class="innerLi itemSucursal">
+                                <ul style="list-style: none;">
+                                    <i class="fa-solid fa-house iconHouse"></i><li style="display: inline;"><strong>Dirección:</strong> {{e.calle}}</li>
+                                    <li *ngIf="e.numero != null"><strong>Altura:</strong> {{ e.numero }} </li>               
+                            <li><strong>Estado: </strong>{{e.estaActivo ? 'Activo' : 'Inactivo'}}
+                            <mat-slide-toggle class="matSlideToggle" [color]="'primary'" [checked]="e.estaActivo" (toggleChange)="cambioEstado(e)"></mat-slide-toggle></li>
+                            <li *ngIf="e.idTipoLocalidad != null"><strong>Ubicaión:</strong> {{ e.idTipoLocalidad }} </li>
+                            <li *ngIf="e.piso != null"><strong>Piso</strong> {{ e.piso }} </li>
+                            <li *ngIf="e.departamento != null"><strong>Departamento</strong> {{ e.departamento }} </li>
+                            <li class="espBtn" (click)="loadEspecialistas(e.id)"> Ver especialistas </li>
+                        </ul>
+                        </div>
+                        </li>
+                    </ul>
+                    <div class="col-6 fixWidth">
+                        <button class="btn btn-success" (click)="this.newlocal.show()">
+                            Registrar sucursal
+                        </button>
+                    </div>
+                    </div>
+                </div>
+                <!--col-4 antes-->
+                <div class="col-6"> 
+                    <div class="mycard">
+                    <h2 style="display: inline-block;">Profesionales</h2> 
+                    <div class="tooltip-container" *ngIf="showProfTool">
+                        <span class="tooltip-icon" style=" margin-left: 10px" >
+                          <i class="fas fa-exclamation-circle myicon"></i>
+                        </span>
+                        <div class="tooltip-text">Para cargar un profesional debe tener sucursales declaradas</div>
+                      </div>
+                    <div class="row">
+                        <div class="mysubcard" style="margin-left: 20px">
+                        <p style="margin-bottom: 0px;"><strong>Profesionales registrados:</strong></p>
+                        <!-- <a (click)="this.modal.show()">Ver profesionales</a>
+                        <br> -->
+                        <a style="margin-top: 5px; margin-bottom: 5px" class="mt-3" (click)="redirect('vets')">Ir a profesionales</a>
+                    </div>
+                    </div>
+
+                      <!--//////////-->  
+
+                    <ul class="containerList">
+                        <li *ngFor="let e of especialistas" class="mysubcard">
+                            <div class="innerLi itemSucursal">
+                                <ul style="list-style: none;">
+                                    <i class="fa-solid fa-user-doctor"></i><li style="display: inline;"><strong>Nombre:</strong> {{e.nombre}} </li>               
+                            <!-- <li><strong>Estado: </strong>{{e.estaActivo ==  1 ? 'Activo' : 'Inactivo'}} -->
+                            <!-- <mat-slide-toggle class="matSlideToggle" [color]="'#00ff00'" [checked]="e.estaActivo == 1 ? true : false" (toggleChange)="cambioEstado(e)"></mat-slide-toggle></li> -->
+                            <!-- <li><strong>Nombre</strong> {{ e.nombre }} </li> -->
+                            <li><strong>Especialidad:</strong> {{ e.especialidadDescripcion }} </li>
+                            <!-- <li *ngIf="e.departamento != ''"><strong>Departamento</strong> {{ e.departamento }} </li> -->
+                        </ul>
+                        </div>
+                        </li>
+                    </ul>
+                    <div class="col-6 fixWidth">
+                        <button [disabled]="establecimientos.length < 1" class="btn btn-success" (click)="this.newprofesional.show()">
+                            Registrar profesional
+                        </button>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-4" style="display: none;">
+                    <div class="mycard">
+                    <h2>Historiales clínicos</h2>
+                    <div class="row" style="margin-left: 20px">
+                        <a (click)="redirect('medical-history')">Ver historiales</a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<modal [modalTitle]="'Profesionales registrados'" [confirmTxt]="'Confirmar'" [cancelTxt]="'Cancelar'" #modal
+    (onConfirm)="onConfirmModal()" [modalSubtitle]="" [arrayList]="listDoctors()">
+</modal>
+<new-local #newlocal (onCreateLocal)="onCreateLocal()"></new-local>
+<new-profesional #newprofesional (onCreateProfessional)="onCreateProfessional($event)"></new-profesional>
+<ng-container>
+<mat-form-field style="display: none;">
+    <i class="fa-solid fa-user-doctor"></i>
+    <input type="number" [(ngModel)]="durationInSeconds" matInput>
+</mat-form-field>
+</ng-container>
+<vet-info #vetinfo [vet]="vet" (infoVet)="actualizarInfoVeterinaria($event)"></vet-info>

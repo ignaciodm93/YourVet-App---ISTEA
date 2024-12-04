@@ -1,0 +1,31 @@
+<div class="modal" [ngClass]="{'visible': mostrarCartel}">
+    <div class="modal-content text-center">
+        <div class="modal-header">
+            <h3 class="modalTitle"> Mis datos </h3>
+        </div>
+        <form [formGroup]="form" class="mainForm">
+            <div class="form-group fccustom">
+                <label for="nombre">Nombre Veterinaria:</label>
+                <input class="form-control" type="text" id="nombre" formControlName="nombre" value="{{vet.nombreVet}}">
+            </div>
+            <div class="form-group fccustom">
+                <label for="">Tipo documento:</label>
+                <select [(ngModel)]="currentDoc" class="form-control" id="idTipoDoc" formControlName="idTipoDoc">
+                    <option *ngFor="let doc of docs; let i = index" [value]="doc.id">{{doc.descripcion}}</option>
+                </select>
+            </div>
+            <div class="form-group fccustom">
+                <label for="doc">Documento:</label>
+                <input value="{{vet.nrodoc}}"  class="form-control" type="number" id="doc" formControlName="doc">
+            </div>
+        </form>
+        <app-dropzone [initialImageBase64]="vet.fotoPerfilBase64" (base64Ready)="onBase64Ready($event)" (formatError)="formatError()"></app-dropzone>
+        <div class="modal-footer">
+            <p *ngIf="showError" class="errorMsg">*El formulario posee errores.</p>
+            <div class="modalBtnGroup" role="group">
+                <button type="button" class="btn btn-secondary modalBtnLeft" (click)="close()"> Cerrar </button>
+                <button type="button" class="btn btn-primary modalBtnRight" (click)="confirm()"> Guardar </button>
+            </div>
+        </div>
+    </div>
+</div>

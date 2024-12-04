@@ -1,0 +1,9 @@
+<body class="vet-body">
+    <div class="container mt-4">
+        <h2 class="title">Profesionales</h2>
+    </div>
+    <main-table (sendAction)="onRowAction($event)" class="profesionales" [classPrefix]="'vet'" [list]="especialistas" [colHeaders]="getColHeaders()"></main-table>
+</body>
+<modal [arrayList]="itemArray" [modalTitle]="'Ficha del profesional'" [hasSecondBtn]="false" [confirmTxt]="null" [cancelTxt]="'Cerrar'" #modal (onConfirm)="onConfirmModal()" [modalSubtitle]="modalSub" [modalTxt]="modalTxt">
+</modal>
+<!-- [confirmTxt]="'Modificar'" -->

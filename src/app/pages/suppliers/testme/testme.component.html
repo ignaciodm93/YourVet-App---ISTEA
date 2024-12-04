@@ -1,0 +1,35 @@
+<body class="vet-body">
+    <div class="container mt-4">
+        <h2>Test me</h2>
+        <button (click)="test()">Test</button>
+        <button (click)="this.modal.show()">test modal</button>
+        <button (click)="obtenerPacientePorId()">obtener paciente por id</button>
+        <button (click)="getProvincias()">getProvincias</button>
+        <button (click)="getAntiparasitarios()">getAntiparasitarios</button>
+        <button (click)="getCalificacion()">getCalificacion</button>
+        <button (click)="getCodigosArea()">getCodigosArea</button>
+        <button (click)="getDocumentos()">getDocumentos</button>
+        <button (click)="getEnfermedades()">getEnfermedades</button>
+        <button (click)="getEspecialidad()">getEspecialidad</button>
+        <button (click)="getEstadosConsulta()">getEstadosConsulta</button>
+        <button (click)="getLocalidades()">getLocalidades</button>
+        <button (click)="getPracticas()">getPracticas</button>
+        <button (click)="getRaza()">getRaza</button>
+        <button (click)="getSexo()">getSexo</button>
+        <button (click)="getVacunas()">getVacunas</button>
+        <button (click)="obtenerEstablecimientosPaginados()">obtenerEstablecimientosPaginados</button>
+        <mat-form-field>
+            <mat-label>Toppings</mat-label>
+            <mat-select [formControl]="toppings" multiple>
+              <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-icon matBadge="15" matBadgeColor="warn">home</mat-icon>
+    <span class="cdk-visually-hidden">
+      Example with a home icon with overlaid badge showing the number 15
+    </span>          
+    </div>
+    <main-table [classPrefix]="'vet'" [list]="getList()" [colHeaders]="getColHeaders()"></main-table>
+</body>
+<modal [modalTitle]="'Modal de confirmación'" [confirmTxt]="'Confirmar'" [cancelTxt]="'Cancelar'" #modal (onConfirm)="onConfirmModal()" [modalSubtitle]="'Texto de prueba'" [modalTxt]="'Este es un texto de prueba de explicación de funcionamiento del modal para probar anchos, altos y estilos visuales.'">
+</modal>

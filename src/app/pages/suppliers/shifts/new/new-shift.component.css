@@ -1,0 +1,15 @@
+full-calendar {
+    background-color: rgb(252, 214, 255);
+    width: 700px;
+    height: 700px;
+}
+
+
+.fc .fc-daygrid-day-frame {
+    border: 1px solid black;
+}
+
+full-calendar {
+    outline: 2px solid rgb(60, 4, 71);
+    background-color: white;
+}

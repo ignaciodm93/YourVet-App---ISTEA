@@ -1,0 +1,54 @@
+<div class="modal-custom" [ngClass]="{'visible': mostrarCartel}" [ngClass]="extraClass">
+    <div class="modal-custom-content text-center">
+        <div class="modal-custom-header">
+            <h3 class="modal-customTitle"> {{modalTitle}} </h3>
+        </div>
+        <div class="modal-custom-body">
+            <h5> {{modalSubtitle}} </h5>
+            <p> {{modalTxt}} </p>
+            <ul style="list-style-type: none;">
+                <li *ngFor="let element of arrayList">
+                    <p class="elementOfArray">
+                        <i class="fa-solid fa-diamond fa-xs"></i><strong> {{element}} </strong>
+                    </p>                  
+                </li>
+            </ul>
+            <div  *ngIf="showInputText" class="row">
+                <div class="col-4">
+                    <mat-form-field>
+                        <mat-label>Vacunas:</mat-label>
+                        <mat-select multiple>
+                          <mat-option (click)="agregarVacuna(v)" *ngFor="let v of vacunasList" [value]="v.id">{{v.descripcion}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>     
+                </div>
+                <div class="col-4">
+                    <mat-form-field>
+                        <mat-label>Prácticas:</mat-label>
+                        <mat-select multiple>
+                          <mat-option (click)="agregarPractica(p)" *ngFor="let p of practicasList" [value]="p.id">{{p.descripcion}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>     
+                </div>
+                <div class="col-4">
+                    <mat-form-field>
+                        <mat-label>Antiparasitarios:</mat-label>
+                        <mat-select multiple>
+                          <mat-option (click)="agregarAntiparasitario(a)" *ngFor="let a of antiparasitariosList" [value]="a.id">{{a.descripcion}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>     
+                </div>
+            </div>
+                     
+            <input (input)="chequearInput($event)" *ngIf="showInputText" type="text" id="descripcion" name="descripcion" placeholder="Descripción de la atención realizada">        
+        </div>
+        <div class="modal-custom-footer">
+            <div class="modal-customBtnGroup" role="group">
+                <button *ngIf="hasFirstBtn" type="button" class="btn btn-secondary modal-customBtnLeft commonMargins" (click)="close()"> {{cancelTxt}} </button>
+                <button *ngIf="hasSecondBtn" type="button" class="btn btn-primary modal-customBtnRight commonMargins" (click)="confirm()"> {{confirmTxt}} </button>
+                <button [disabled]="isSuccessDisabled" *ngIf="actionFsTxt" type="button" class="btn btn-success modal-customBtnRight commonMargins" (click)="actionComplete(actionFsTxt)"> {{actionFsTxt}} </button>
+                <button *ngIf="actionScTxt" type="button" class="btn btn-danger modal-customBtnRight commonMargins" (click)="action(actionScTxt)"> {{actionScTxt}} </button>
+            </div>
+        </div>
+    </div>
+</div>

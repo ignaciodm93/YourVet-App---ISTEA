@@ -1,0 +1,303 @@
+/* dashboard.css */
+
+body {
+    /* font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: #F2F2F2; */
+}
+
+.container {
+    display: flex;
+}
+
+/* ESTILOS PARA EL HEADER */
+
+#dashboard-header {
+    background-color: #03426B;
+    color: #fff;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid white;
+    width: 100%; /* Ancho completo */
+}
+
+.dashboard-logo-and-text {
+    margin-left: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.dashboard-logo {
+    max-width: 50px;
+    margin-right: 10px;
+}
+
+.dashboard-title {
+    font-size: 20px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.dashboard-icons {
+    margin-right: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.dashboard-icons img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.username {
+    font-size: 16px;
+    color: #fff;
+    margin-right: 20px;
+}
+
+/* ESTILOS PARA EL SIDEBAR*/
+
+#sidebar {
+    background-color: #03426B;
+    color: #fff;
+    padding: 20px;
+    padding-top: 70px;
+    width: 20%; /* Ancho del sidebar */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh; 
+}
+
+#sidebar img {
+    max-width: 100%;
+    border-radius: 50%;
+}
+
+#sidebar-title {
+    margin-top: 35px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#sidebar-spans {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#sidebar-spans span {
+    margin-top: 30px;
+
+}
+
+
+
+
+/*  ESTILOS DEL MAIN  */
+
+#main {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-title {
+    color: #03426B;
+    text-align: center;
+    font-size: px;
+    margin-bottom: 45px;
+}
+
+
+.cards {
+    width: 100%;
+    padding-bottom: 35px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 20px;
+}
+
+.cards .card {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+
+.number {
+    font-size: 35px;
+    font-weight: 500;
+    color: #04A0C6;
+}
+
+.card-name {
+    color: #888;
+    font-weight: 600;
+}
+
+.icon-box img {
+    width: 40px;
+    font-size: 45px;
+    color: #04A0C6;
+}
+
+/* Estilos para los charts */
+.charts {
+    margin: 0;
+    display: flex;
+    justify-content: space-between; /* Distribuir los elementos a los extremos del contenedor */
+    flex-wrap: wrap;
+}
+
+.chart, .doughnut-chart {
+    width: calc(60% - 10px); /* Ancho del 48% del contenedor, restándole el espacio entre ellos */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    margin-bottom: 20px;
+}
+
+.chart h2, .doughnut-chart h2 {
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: #666;
+    text-align: center;
+}
+
+.doughnut-chart {
+    width: calc(30% - 10px); /* Ancho del 24% del contenedor, restándole el espacio entre ellos */
+    /* Otros estilos existentes... */
+}
+
+/* Estilos para el footer */
+/* Estilos para el footer */
+.mi-footer {
+    font-size: 10px; /* Ajusta el tamaño de fuente según tu preferencia */
+    background-color: #888; /* Fondo gris */
+    color: white; /* Texto blanco */
+    padding: 5px; /* Espaciado interno */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid white;
+}
+
+.footer-seccion {
+    flex: 1;
+}
+
+.izquierda {
+    margin-left: 25px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.centro a {
+    text-decoration: none; /* Quita la decoración del enlace en el centro del footer */
+    color: white; /* Establece el color del texto del enlace */
+}
+
+.centro a:hover {
+    text-decoration: underline; /* Agrega subrayado al pasar el ratón sobre el enlace */
+}
+
+.centro {
+    text-align: center;
+}
+
+.derecha {
+    margin-right: 25px;
+    text-align: right;
+}
+
+.logo {
+    width: 20px;
+    margin-right: 10px;
+}
+
+
+/* Estilos para el modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos horizontalmente */
+    text-align: center; /* Centra el texto horizontalmente */
+    position: relative;
+    background-color: #fefefe;
+    font-size: 10px;
+    color: #03426B;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px; /* Ajusta el ancho máximo del modal según tus necesidades */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Permite desplazamiento vertical si el contenido es largo */
+}
+
+
+.modal-content p {
+    text-align: justify;
+}
+
+/* Agrega estos estilos para el botón en el modal */
+
+.modal-content button {
+    margin-top: 20px;
+    background-color: #03426B;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.modal-content button:hover {
+    background-color: #023654;
+}
+
+
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px; /* Ajusta la posición superior */
+    right: 15px; /* Ajusta la posición derecha */
+    cursor: pointer;
+    float: right;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
