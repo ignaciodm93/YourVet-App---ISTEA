@@ -1,0 +1,215 @@
+
+.conteiner{
+  width: 80vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+ }
+
+.conteiner-pets-title{
+  width: 100%;
+  height: 50%;
+}
+
+.conteiner-pets{
+  width: 100%;
+  height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pets{
+  width: 15%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.pets-t{
+  width: 80%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid;
+
+}
+
+.c-pest-i img{
+  width: 100px;
+  height: 100px;
+  display: flex;
+  border-radius: 50%;
+  box-shadow: 0 0 5px;
+  transition: all 0.25s ease-in-out;
+  cursor: pointer;
+}
+.c-pest-i{
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.c-pest-p{
+  width: 100%;
+  height: 20%;
+  text-align: center;
+}
+
+.c-pest-p p{
+font-size: 16px;
+}
+
+.conteiner-title{
+  width: 100%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items:center ;
+}
+
+ 
+.card-container {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+ 
+}
+.conteiner-b-o{
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+
+}
+
+.b-o{
+  width: 30%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.b-o p{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  
+}
+.b-o i{
+  font-size: 18px;
+  color: rgb(0, 94, 255);
+  margin-right: 10px ;
+}
+/**********************************/
+.b-o p:hover, #datos-p-l:hover, .d-n-b-t-p-i:hover{
+  background-color:  rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+.selected{
+  transform: scale(1.1);
+  box-shadow: 0 0px 10px #000000;
+  transition: all 0.25s ease-in-out;
+}
+  
+
+/**********************************/
+.conteiner-e-p {
+  width: 81vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.e-p-option {
+  width: 100%;
+  height:90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.c-e-p-datos{
+  width: 70%;
+  height:100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  padding-top: 12px;
+  border-radius: 10px; 
+  z-index:10;
+
+}
+
+
+.c-e-p-datos-d-n{
+  width: 65%;
+  height:100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+
+}
+
+.d-n-b-t-p-i {
+  background-color: #afdaff;
+}
+
+.d-n-b-t-p-i:hover {
+  transition: all ease 500ms;
+  background-color: #239cc0;
+  color: whitesmoke;
+}
+
+::ng-deep ::-webkit-scrollbar {
+  width: 2px;
+  height: 1px;
+  background-color: rgb(178, 218, 243);
+  position: fixed;
+  right: 0px
+}
+
+::ng-deep::-webkit-scrollbar-thumb {
+  background: navy;
+  width: 5px;
+  position: fixed;
+  right: 0px
+}
+
+::ng-deep ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+::ng-deep .errorToast {
+  border: solid 3px #800000;
+  background-color: #ffebeb !important;
+  color: #334635 !important;
+}
+::ng-deep .okToast {
+  border: solid 3px #008025;
+  background-color: #ebfff3 !important;
+  color: #334635 !important;
+}
+
+.disabled {
+  pointer-events: none; /* Desactiva eventos de puntero */
+  opacity: 0.5; /* Puedes ajustar la opacidad para dar una apariencia "inactiva" */
+}

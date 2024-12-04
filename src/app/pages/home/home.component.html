@@ -1,0 +1,15 @@
+<div class="container-fluid" id="main-container">
+  <app-header></app-header>
+
+  <div class="row flex-grow-1"> <!-- Utiliza la clase 'flex-grow-1' para que el contenido ocupe el espacio restante -->
+    <!-- <div class="col"> -->
+    <!-- Contenido del componente MainContent que ocupará el espacio restante de la pantalla -->
+    <app-main-content></app-main-content>
+    <!-- </div> -->
+  </div>
+
+  <app-login *ngIf="this.modalLogin"></app-login>
+
+  <app-footer class="mt-auto"></app-footer>
+  <!-- Utiliza la clase 'mt-auto' para fijar el footer en la parte inferior -->
+</div>

@@ -1,0 +1,190 @@
+
+<div *ngIf="mainperfil" class="conteiner mycard">
+
+    <div  class="conteiner-perfil">
+        <div class="photo">
+            <img style="border: solid 2px navy" src="https://w7.pngwing.com/pngs/505/761/png-transparent-login-computer-icons-avatar-icon-monochrome-black-silhouette.png" *ngIf="!imagenperfil">
+            <img style="border: solid 2px navy" src="data:image/jpeg;base64,{{imagenperfil}} "  alt=""  *ngIf="imagenperfil" >
+        </div>
+        <div class="name">
+            <h2>Bienvenido, {{nameUser}}</h2>
+        </div>
+        <div class="detail">
+            <p>Gestiona tu información y actualizala para mejorar tu experiencia en YourVet</p>
+        </div>
+    </div >
+
+    <div class="conteiner-option">
+        <div class="conteiner-o-o">
+            <div class="option"> 
+                <div class="conteiner-o-d-p">
+                    <div class="conteiner-o-d"> 
+                        <div class="option-detail">
+                            <h2>
+                                Informacion Personal
+                            </h2>
+                        </div>
+                        <div class="option-detail"> 
+                            <p>
+                                Información basica sobre ti 
+                            </p>
+                        </div>
+                    </div>
+                    <div class="conteiner-o-p">
+                        <img style="border-radius: 10px; border: solid 1px navy;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYZf-7qsUfibzawJ2hUO8zofbBrjVXvgrVt3PGXLCg6b8JgjVv--X_afWUfvx4uu_wQDQ&usqp=CAU" alt="">   
+                    </div>
+    
+                </div>
+                <div   class="option-link" (click)="editsperfil()">
+                    <h2>
+                        Informacion de tu cuenta
+                    </h2>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="conteiner-o-o">
+            <div class="option">
+                <div class="conteiner-o-d-p">
+                    <div class="conteiner-o-d">
+                        <div class="option-detail">
+                            <h2>
+                                Informacion Extra
+                            </h2>
+                        </div>
+        
+                        <div class="option-detail"> 
+                            <p>
+                                Actualiza la informacion en tu cuenta
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="conteiner-o-p">
+                        <img style="border-radius: 10px; border: solid 1px navy;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9Bhi8pa6iTkorap1JjDHqCc9XgzNoAumzvMKVd9JVr6Pw8o6Sy0NhtKXO0Evn5cSmRgY&usqp=CAU" alt="">     
+                    </div>
+                </div>
+                
+                <div class="option-link" (click)="editsegurity()">
+                    <h2>
+                        Agregar informacion extra
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>
+
+<!-------------------------------Informacion personal--------------------------------------------->
+
+<div *ngIf="editperfilall" class="conteiner-e-p">
+    <div class="conteiner-a">
+       <h2 (click)="editsperfil()" ><i class="	fas fa-arrow-left" ></i> Perfil</h2> 
+    </div>
+    <div class="e-p">
+        <h2>Información personal</h2>
+        <p>Informacion sobre ti y opciones para gestionarlas </p>
+    </div>
+
+    <div  class="e-p-option">
+
+        <div class="c-e-p-datos">
+            
+              <!--  <div id="datos" >
+                    <h2>Informacion basica</h2>
+                    <p>Es posible que los profecionales puedan ver parte de la información </p>
+                </div>-->
+           
+         
+
+            <div class="c-e-p-h-datos">
+                <div  class="datos" >
+                    <h2>Nombre</h2>
+                    <h2 id="datos-p">{{name}}</h2>    
+                </div>
+            </div>
+
+            <div class="c-e-p-h-datos">
+                <div  class="datos" >
+                    <h2>Nombre de usuario</h2>
+                    <h2 id="datos-p">{{nameUser}}</h2>
+                </div>
+            </div>
+
+
+            <div class="c-e-p-h-datos">
+                <div  class="datos" >
+                    <h2>Telefono</h2>
+                    <h2 id="datos-p">{{telefono}}</h2>
+                </div>    
+            </div>
+
+            <div class="c-e-p-h-datos">
+                <div  class="datos" >
+                    <h2>Correo Electronico</h2>
+                    <h2 id="datos-p">{{email}}</h2>
+                </div>    
+            </div>
+            <div class="c-e-p-h-datos" *ngIf="provincia"  >
+                <div  class="datos" >
+                    <h2>Numero documento</h2>
+                    <h2 id="datos-p">{{numerodocumento}}</h2>
+                </div>    
+            </div>
+            
+            <div class="c-e-p-h-datos"*ngIf="provincia">
+                <div  class="datos" >
+                    <h2>Provincia</h2>
+                    <h2 id="datos-p">{{provincia}}</h2>
+                </div>
+            </div>
+
+         
+            <div class="c-e-p-h-datos"  *ngIf="localidad" >
+                <div  class="datos" >
+                    <h2>Localidad</h2>
+                    <h2 id="datos-p">{{localidad}}</h2>
+                </div>
+            </div>
+
+            <div class="c-e-p-h-datos" *ngIf="calle"  >
+                <div  class="datos" >
+                    <h2>Direccion</h2>
+                    <h2 id="datos-p">{{calle}} {{numero}}</h2>
+                 <!--   <i  id="datos-p-l" class="fa fa-camera-retro"  ></i>-->
+                </div>
+            </div>
+            <div class="c-e-p-h-datos" *ngIf="piso">
+                <div  class="datos" >
+                    <h2>Piso</h2>
+                    <h2 id="datos-p">{{piso}}</h2>
+                 <!--   <i  id="datos-p-l" class="fa fa-camera-retro"  ></i>-->
+                </div>
+            </div>
+            <div class="c-e-p-h-datos" *ngIf="departamento"  >
+                <div  class="datos" >
+                    <h2>Departamento</h2>
+                    <h2 id="datos-p">{{departamento}} </h2>
+                 <!--   <i  id="datos-p-l" class="fa fa-camera-retro"  ></i>-->
+                </div>
+            </div>
+            <div class="c-e-p-h-datos"  *ngIf="codigopostal"  >
+                <div  class="datos" >
+                    <h2>Codigo postal</h2>
+                    <h2 id="datos-p">{{codigopostal}} </h2>
+                 <!--   <i  id="datos-p-l" class="fa fa-camera-retro"  ></i>-->
+                </div>
+            </div>
+
+        </div>
+    </div> 
+</div>
+
+
+
+
+
+    
+    
+

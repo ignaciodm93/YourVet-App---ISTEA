@@ -1,0 +1,144 @@
+
+<div class="conteiner background mycard"> 
+    <div class="conteiner-pets-title" style="display: contents;">
+            <div class="conteiner-title">
+                    <h4>
+                        Mascotas
+                    </h4>
+                <p *ngIf="petsArray.length==0">Asocia a tu mascota para la mejor experiencia en YoutVet</p>
+                <p *ngIf="petsArray.length!=0">Puedes modificar los datos de tus mascotas al seleccionarla</p>
+            </div>
+
+            <div class="conteiner-pets"  *ngIf="">
+                <div   class="pets-t" >  
+                       
+                </div>
+                
+            </div>
+            <div class="conteiner-pets"  style="overflow-x: auto!important;
+            height: 80% !important;background-color: #125afb1c;
+    border-radius: 10px "*ngIf="petsArray.length!=0">
+                <div  style=" margin-left: 50px !important;"  class="pets" *ngFor="let p of  petsArray; let idx=index " (click)="OpenForEdit(p)">  
+                  
+                        <div class="c-pest-i" >
+                            <!-- <img style="border: solid 1px navy;" src="setImg(p.fotoPacienteBase64)" alt=""  [ngClass]="{'selected':p === selectedPets}" > -->
+                            <img style="border: solid 1px navy; width: 190px;
+                            height: 190px;  margin-left: 50px !important;" *ngIf="p.fotoPacienteBase64" [src]=" 'data:image/png;base64,'+p.fotoPacienteBase64" alt="" >
+    <img style="border: solid 1px navy; width: 190px;
+    height: 190px;  margin-left: 50px !important;" *ngIf="!p.fotoPacienteBase64" src="../../../../assets/images/pet_deafult.png" alt="" >
+                        </div>
+                        <div class="c-pest-p" style="margin-left: 50px !important;">
+                            <p style="margin-bottom: 0px;">{{p.nombre}} </p>
+                            <span *ngIf="!p.estaActivo">(Inactivo)</span>
+                        </div>
+                     
+                </div>
+               
+            </div>
+         
+    </div>
+
+    <div  class="card-container">
+
+        <div class="conteiner-b-o">
+            <div class="b-o">
+                <p (click)="newPet()" class="extraStyle" style="margin-top: 5px; z-index: 10;"> <i class=" far fa-plus-square"></i>Agregar una mascota  </p>
+              
+            </div> 
+        </div>
+     
+ <!----------------------------------------------Main descripcion----------------------------------------------------------------->
+      
+          <div  class="conteiner-e-p" style="width: 100%;">
+            <div class="e-p-option" *ngIf="petsArray.length==0">
+                <div class="c-e-p-datos" style="background-color: #ceeced">
+                        <div id="datos-m" >
+                        <h2>Tu familia en YourVet</h2>
+                            <p style="width: 40%;
+                            font-size: 14px;">En YoutVet amamos a las mascotas tanto com vos, <br>por eso te brindamos la mejor atencion con los mejores <br> esplecialistas. <br>
+                            YourVet, tu mascota es nuestra mascota.</p>
+                        </div>
+                        <img class="imgFamily" src="https://us.123rf.com/450wm/irinashu9/irinashu92011/irinashu9201100026/158383449-retrato-de-una-familia-feliz-mam%C3%A1-sostiene-a-su-hijo-pap%C3%A1-e-hija-un-perro-grandes-padres-con.jpg?ver=6" alt="">
+                </div> 
+          </div>  
+
+            <div  class="conteiner-e-p" *ngIf="viewData">
+                <div class="e-p-option">
+                    <div class="c-e-p-datos-d" style="height: 93%;">
+                        
+                        <div class="c-e-p-datos-d-n-b">
+                            <div class="d-n-b-t disabled"  (click)="newShifts()" *ngIf="!selectedPets.estaActivo">
+                                <div class="d-n-b-t-p-i" >
+                                    <div class="d-n-b-t-i"   >
+                                        <i class="far fa-calendar-alt"></i>
+                                    </div> 
+                                    <div  class="d-n-b-t-p">
+                                        <p (click)="irATurnos()"> Nuevo Turno </p>  
+                                    </div>    
+                                </div>
+                            </div> 
+                            <div class="d-n-b-t" (click)="newShifts()" *ngIf="selectedPets.estaActivo">
+                                <div class="d-n-b-t-p-i" >
+                                    <div class="d-n-b-t-i"   >
+                                        <i class="far fa-calendar-alt"></i>
+                                    </div> 
+                                    <div  class="d-n-b-t-p">
+                                        <p (click)="irATurnos()"> Nuevo Turno </p>  
+                                    </div>    
+                                </div>
+                            </div> 
+                            <div class="d-n-b-t" (click)="editPet()">
+                                <div class="d-n-b-t-p-i">
+                                    <div class="d-n-b-t-i"   >
+                                        <i class="far fa-edit"></i>
+                                    </div> 
+                                    <div  class="d-n-b-t-p">
+                                        <p > Editar </p>
+                                    </div>    
+                                 </div>
+                            </div>
+                            
+                            <div  class="d-n-b-t" >
+                                <div class="d-n-b-t-p-i">
+                                    <div class="d-n-b-t-i"   >
+                                        <i class="far fa-trash-alt" *ngIf="selectedPets.estaActivo"></i>
+                                        <i class="fa-solid fa-check" *ngIf="!selectedPets.estaActivo"></i>
+                                    </div> 
+                                    <div (click)="this.modal.show()" class="d-n-b-t-p" *ngIf="selectedPets.estaActivo">
+                                        <p> Dar de baja</p>
+                                    </div>  
+                                    <div (click)="activar()" class="d-n-b-t-p" *ngIf="!selectedPets.estaActivo">
+                                        <p> Activar</p>
+                                    </div>   
+                                 </div>
+                            </div>
+                                
+                            <!-- <div  class="d-n-b-t" >
+
+                                <div class="d-n-b-t-p-i" (click)="cancelPet()"  >
+                                    <div class="d-n-b-t-i"   >
+                                        <i class="far fa-times-circle"></i>
+                                    </div> 
+                                    <div  class="d-n-b-t-p">
+                                        <p > Cancelar</p>
+                                    </div>    
+                                 </div>
+                            
+                            </div> -->
+                           
+                        </div> 
+                        <modal [modalTitle]="'¿Deseas dar de baja a tu mascota?'" [confirmTxt]="'Confirmar'" [cancelTxt]="'Cancelar'" #modal (onConfirm)="deletePet()" [modalSubtitle]="'Los datos de '+ selectedPets.nombre+ ' se mantendrán pero no podrás operar con el hasta que lo vuelvas a activar'" [modalTxt]="'Recuerdas que siempres puedes agregar, modificar y eliminar los datos de tus mascotas'"></modal>  
+                </div>  
+
+              
+    </div>  
+
+
+
+</div>
+
+
+
+
+
+ 

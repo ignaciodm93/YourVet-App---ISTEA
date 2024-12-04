@@ -1,0 +1,62 @@
+.container {
+    height: 100vh;
+}
+
+.custom-img {
+    max-width: 100%;
+    /* Limita el ancho máximo al 100% del contenedor */
+    max-height: 40vh;
+    /* Establece una altura máxima, ajusta según tus necesidades */
+    /* border: 1px solid; */
+}
+
+.responsive-text {
+    font-size: 2rem;
+    /* Tamaño de fuente en unidades rem, ajusta según tus preferencias */
+    max-width: 80%;
+    /* Establece un ancho máximo para el texto */
+}
+
+.responsive-text {
+    margin: 0 auto;
+}
+
+/* Estilo para el fondo */
+.blue-background {
+    background: radial-gradient(ellipse at center, white, #007BFF);
+    /* Degradado desde los bordes hacia el centro */
+    height: 100vh;
+    /* 100% de la altura de la ventana */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Estilo para el botón */
+.button-styling {
+    background: #007BFF;
+    /* Color de fondo del botón (azul) */
+    color: white;
+    /* Color del texto del botón (blanco) */
+    border: none;
+    /* Sin borde */
+    border-radius: 10px;
+    /* Bordes redondeados */
+    padding: 10px 20px;
+    /* Espaciado interno */
+    font-size: 18px;
+    /* Tamaño de fuente */
+    cursor: pointer;
+    /* Cambia el cursor al pasar por encima del botón */
+    transition: background 0.3s, color 0.3s;
+    /* Transición suave al cambiar el color */
+}
+
+/* Estilo para el botón al pasar el cursor por encima */
+.button-styling:hover {
+    background: #0065d1;
+    /* Color de fondo al pasar el cursor (blanco) */
+    color: white;
+    /* Color de texto al pasar el cursor (azul) */
+}

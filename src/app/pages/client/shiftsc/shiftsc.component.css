@@ -1,0 +1,195 @@
+table tr td {
+  background-color: rgb(226 232 255);
+  color: rgb(39, 38, 78)
+}
+
+.rowIco {
+  margin-right: 5px;
+}
+
+full-calendar {
+  background-color: rgb(206 226 255);
+  /* width: 750px;
+  height: 750px; */
+  height: 80vh;
+  width: 80vh;
+  outline: 2px solid rgb(60, 4, 71);
+}
+
+
+.fc .fc-daygrid-day-frame {
+  border: 1px solid black;
+}
+
+full-calendar {
+  /* background-color: white; */
+}
+
+.errorMsg {
+  color: brown;
+}
+
+.inputForm {
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.disabled {
+  pointer-events: none;
+  background-color: #6d92c9;
+  opacity: 1;
+}
+
+full-calendar body::-webkit-scrollbar {
+  width: 12px;
+}
+
+full-calendar body::-webkit-scrollbar-track {
+  background: orange;
+}
+
+full-calendar body::-webkit-scrollbar-thumb {
+  background-color: blue;
+  border-radius: 20px;
+  border: 3px solid orange;
+}
+
+::ng-deep .fc .fc-daygrid-day-frame {
+  background-color: rgb(228 245 255) !important;
+  /* height: 30px; */
+  height: 10vh;
+  overflow: scroll;
+}
+
+::ng-deep ::-webkit-scrollbar {
+  width: 2px;
+  height: 1px;
+  background-color: rgb(178, 218, 243);
+}
+
+::ng-deep::-webkit-scrollbar-thumb {
+  background: navy;
+  width: 3px;
+}
+
+::ng-deep ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+::ng-deep .fc .fc-toolbar.fc-header-toolbar {
+  margin: 5px;
+}
+
+.innerContainer {
+  left: 260px;
+  /* position: absolute; */
+  position: fixed;
+}
+
+.sticked {
+  /* width: 63%; */
+  width: 90vh;
+  top: 10px;
+  position: relative;
+  left: 0px;
+}
+
+.modal-body {
+  text-align: left;
+}
+
+@media screen and (max-width: 1200px) {
+  ::ng-deep full-calendar > div.fc-header-toolbar.fc-toolbar div:nth-child(2) {
+      display: none;
+  }
+  ::ng-deep full-calendar > div.fc-header-toolbar.fc-toolbar div:nth-child(3) {
+      display: none;
+  }
+}
+
+::ng-deep full-calendar > div.fc-header-toolbar.fc-toolbar > div > button {
+  /* background-color: blue; */
+  font-size: 13px;
+  border-radius: 3px;
+}
+
+::ng-deep body > div > div > div > div.col-8.sticked > div > full-calendar > div.fc-header-toolbar.fc-toolbar > div > div  {
+  font-size: 13px;
+  border-radius: 3px;
+}
+
+.fc-toolbar-title {
+  color: green;
+}
+
+.form-control {
+  border-radius: 0px;
+  height: 30px;
+}
+
+.inputForm {
+  border-radius: 0px;
+  height: 32px;
+}
+
+::ng-deep .errorToast {
+  border: solid 3px #800000;
+  background-color: #ffebeb !important;
+  color: #334635 !important;
+}
+::ng-deep .okToast {
+  border: solid 3px #008025;
+  background-color: #ebfff3 !important;
+  color: #334635 !important;
+}
+::ng-deep .warningToast {
+  border: solid 3px rgb(107, 128, 0);
+  background-color: #fcffeb !important;
+  color: #334635 !important;
+}
+
+.buscarTurnoPorMasc {
+  margin-top: 10px;
+    background-color: #87c1cc;
+    border: solid 2px navy;
+    border-radius: 5px;
+}
+
+.labelSearch {
+  margin-bottom: 0px;
+}
+
+.lab {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+::ng-deep .mat-expansion-panel-header-description {
+  flex-grow: 3 !important;
+}
+
+.matExp {
+  margin-top: 30px;
+}
+
+.contt {
+  background-color: #d1edf2b0;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.connt2 {
+  background-color: #b0ccd5d9;
+    height: fit-content;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+::ng-deep .infoToast {
+  border: solid 3px #005580;
+  background-color: rgb(192, 251, 252) !important;
+  color: #334635 !important;
+}

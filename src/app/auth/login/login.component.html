@@ -1,0 +1,21 @@
+<div class="modal" id="loginModal">
+    <div class="modal-content">
+        <span class="close" (click)="closeModal()">&times;</span>
+        <h2>Iniciar Sesión</h2>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
+            <label for="username">Usuario:</label>
+            <input type="text" id="username" formControlName="username" required autocomplete="username">
+    
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" formControlName="password" required autocomplete="current-password">
+    
+            <button type="submit">Ingresar</button>
+        </form>
+    
+        <div class="modal-links">
+            <a href="registro.html">Registrarse</a>
+            <span class="separator">|</span>
+            <a href="#" click="forgotPasswordLink()" id="forgotPasswordLink">Olvidó su contraseña</a>
+        </div>
+    </div>
+</div>

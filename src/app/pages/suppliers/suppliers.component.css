@@ -1,0 +1,54 @@
+.containerframe {
+    --bs-gutter-x: 0;
+}
+
+.imgframe {
+    overflow: hidden;
+}
+
+.mainbody {
+    height:100vh;
+    background-image: url('../../../assets/images/vet13-op.jpg');
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; 
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #cdb8d7;
+    z-index: 1000;
+}
+
+.sidebar-background {
+    background-color: rgb(58 28 120 0.8) !important;
+}
+
+.option-list {
+    margin-top: 20px;
+}
+
+.bar-icon {
+    margin-right: 15px;
+}
+
+.vet-body {
+    margin-left: 12%;
+    width: 90%;
+    background-color: transparent;
+}
+
+.btn-primary {
+    border-radius: 0px;
+    width: 100%;
+}
+
+/* Estilos comunes para los comopnentes hijos */
+.mainTitle {
+    font-size: 55px;
+}

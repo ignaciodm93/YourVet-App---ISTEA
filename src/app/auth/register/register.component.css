@@ -1,0 +1,132 @@
+/* Estilos para el formulario de registro con imagen de fondo en el body */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    position: relative;
+    background: url('../../../assets/images/fondo-registro.jpg') center center/cover no-repeat;
+}
+
+.logo-and-text {
+    display: flex;
+    align-items: center;
+    margin-left: 25px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.overlay-logo {
+    max-width: 50px;
+    margin-right: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.your-vet-text {
+    font-size: 20px;
+    color: #03426B;
+    font-weight: bold;
+}
+
+/* Estilos para el formulario de registro */
+#registrationForm {
+    max-width: 400px;
+    margin: 50px auto; /* Agregado margen superior para centrar verticalmente */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.8);
+    color: #03426B;
+}
+
+#registrationForm h2 {
+    text-align: center;
+    color: #03426B;
+}
+
+#registrationForm label,
+#registrationForm select {
+    font-size: 16px;
+    color: #03426B;
+    margin-bottom: 8px;
+    display: block;
+}
+
+#registrationForm select{
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#registrationForm input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type="radio"].radio-input {
+    width: 5% !important;
+  }
+
+#registrationForm button {
+    background-color: #03426B;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 15px; /* Agregado espacio entre el botón de registro y el botón de volver */
+}
+
+#registrationForm button:hover {
+    background-color: #023654;
+}
+
+#registrationForm input:focus {
+    outline: none;
+    border: 1px solid #03426B;
+}
+
+#registrationForm label,
+#registrationForm input,
+#registrationForm select,
+#registrationForm button {
+    transition: all 0.3s;
+}
+
+/* Estilos para el botón de volver */
+#btnVolver {
+    background-color: #777;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+#btnVolver:hover {
+    background-color: #555;
+}
+
+::ng-deep .errorToast {
+    border: solid 3px #800000;
+    background-color: #ffebeb !important;
+    color: #334635 !important;
+}
+::ng-deep .okToast {
+    border: solid 3px #008025;
+    background-color: #ebfff3 !important;
+    color: #334635 !important;
+}

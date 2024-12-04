@@ -1,0 +1,199 @@
+<div class="conteiner mycard"  >
+
+    <div class="conteiner-a">
+        <div class="conteiner-a-i-h" (click)="cancelPets()">
+            <i class="	fas fa-arrow-left"></i>
+            <h2>Perfil</h2>
+        </div>
+    </div>
+
+    <form #addForm="ngForm" class="e-p-option">
+        <div class="formDiv" >
+            <div id="datos" >
+                <h2 class="petAdd">Informacion complementaria</h2>
+            </div>
+
+       
+
+
+
+
+            <!-----------------------------------tipo localidad---------------------------------------->
+            <div class="c-e-p-h-datos">
+                <div class="datos">
+                    <h2>Localidad</h2>
+                    <div class="conteiner-h2-i">
+                        <select name="tipolocalidad" [(ngModel)]="Modelo.idTipoLocalidad" class="sinborde" #tipolocalidad="ngModel"
+                            (change)="onSelect($any($event.target).value)">
+                            <option value="" disabled selected>Selecciona la Localidad</option>
+                            <option *ngFor="let tipolocalidad of arrtLocalidad" [value]='tipolocalidad.id'>
+                                {{tipolocalidad.descripcion}}</option>
+                        </select>
+                    </div>
+                    <div class="conteiner-alert">
+                        <div class="datoAlerta"
+                            *ngIf="tipolocalidad.hasError('required')">Campo
+                            requerido</div>
+                        <div class="datocompletado" *ngIf="Modelo.idTipoLocalidad">Completado</div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+         
+            <!-----------------------------------calle---------------------------------------->
+            <div class="c-e-p-h-datos">
+                <div class="datos">
+                    <h2>calle</h2>
+                    <div class="conteiner-h2-i">
+                        <input type="text" class="sinborde" placeholder="Nombre de la calle donde vives" name="calle"
+                            [(ngModel)]="Modelo.Calle" #calle="ngModel" required minlength=3   maxlength="10"   >
+
+                    </div>
+                    <div class="conteiner-alert">
+                        <div class="datoAlerta" *ngIf="calle.dirty && calle.hasError('required')">Campo requerido</div>
+                        <div class="datoAlerta" *ngIf="calle.hasError('minlength')  ">Minimo 3 caracteres</div>
+                        <div class="datocompletado" *ngIf="calle.valid ">Completado</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+                     <!-----------------------------------Numero de calle---------------------------------------->
+            <div class="c-e-p-h-datos">
+                <div class="datos">
+                    <h2>Numero</h2>
+                    <div class="conteiner-h2-i">
+                        <input type="text" class="sinborde" placeholder="El numero de la casa en donde vives" name="numero"
+                            [(ngModel)]="Modelo.Numero" #numero="ngModel" required maxlength="5">
+
+                    </div>
+                    <div class="conteiner-alert">
+                        <div class="datoAlerta" *ngIf="numero.dirty && numero.hasError('required')">Campo requerido</div>
+                        <div class="datoAlerta" *ngIf="numero.hasError('minlength')  ">maximo 5 caracteres</div>
+                        <div class="datocompletado" *ngIf="numero.valid ">Completado</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-----------------------------------tipo Documento---------------------------------------->
+            <div class="c-e-p-h-datos">
+                <div class="datos">
+                    <h2>Tipo Documento</h2>
+                    <div class="conteiner-h2-i">
+                        <select name="tipoDocumento" [(ngModel)]="Modelo.IdTipoDocumento" class="sinborde" #tipoDocumento="ngModel">
+                            <option value="" disabled selected>Selecciona Tipo de Documento</option>
+                            <option *ngFor="let tipodocumento of arrtDocumento" [value]='tipodocumento.id'>
+                                {{tipodocumento.descripcion}}</option>
+                        </select>
+                    </div>
+                    <div class="conteiner-alert">
+                        <div class="datoAlerta" *ngIf="tipoDocumento.dirty &&  tipoDocumento.touched && tipoDocumento.hasError('required')">Campo
+                            requerido</div>
+                        <div class="datocompletado" *ngIf="Modelo.IdTipoDocumento">Completado</div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-----------------------------------numnero Documento---------------------------------------->
+            <div class="c-e-p-h-datos">
+                <div class="datos">
+                    <h2>Numero de Documento</h2>
+                    <div class="conteiner-h2-i">
+                        <input type="text" class="sinborde" placeholder=" Numero de Documento " name="numerodocumento"
+                            #numerodocumento="ngModel" [(ngModel)]="Modelo.NumeroDocumento" required maxlength="9"  minlength="8">
+
+                    </div>
+                    <div class="conteiner-alert">
+                        <div class="datoAlerta" *ngIf="numerodocumento.dirty && numerodocumento.hasError('required')">Campo requerido</div>
+                        <div class="datoAlerta" *ngIf="numerodocumento.hasError('minlength')  ">Minimo 8 caracteres</div>
+                        <div class="datocompletado" *ngIf="numerodocumento.valid">Completado</div>
+                    </div>
+
+                </div>
+            </div>
+            
+
+
+
+
+            <!-----------------------------------piso---------------------------------------->
+            <div class="c-e-p-h-datos">
+                <div class="datos">
+                    <h2>Piso</h2>
+                    <div class="conteiner-h2-i">
+                        <input type="text" class="sinborde" placeholder="Piso " name="piso"
+                            #piso="ngModel" [(ngModel)]="Modelo.Piso" required  maxlength="2">
+
+                    </div>
+                    <div class="conteiner-alert">
+                        <div class="datoAlerta" *ngIf="piso.dirty && piso.hasError('required')">Campo requerido</div>
+                        <div class="datoAlerta" *ngIf="piso.hasError('minlength')  ">Minimo 1 caracteres</div>
+                        <div class="datocompletado" *ngIf="piso.valid">Completado</div>
+                    </div>
+
+                </div>
+            </div>
+               <!-----------------------------------departamento---------------------------------------->
+               <div class="c-e-p-h-datos">
+                <div class="datos">
+                    <h2>Departamento</h2>
+                    <div class="conteiner-h2-i">
+                        <input type="text" class="sinborde" placeholder="Departamento " name="departamento"
+                            #departamento="ngModel" [(ngModel)]="Modelo.Departamento" required maxlength="2">
+
+                    </div>
+                    <div class="conteiner-alert">
+                        <div class="datoAlerta" *ngIf="departamento.dirty && departamento.hasError('required')">Campo requerido</div>
+                        <div class="datoAlerta" *ngIf="departamento.hasError('minlength')  ">maximo 2 caracteres</div>
+                        <div class="datocompletado" *ngIf="departamento.valid">Completado</div>
+                    </div>
+
+                </div>
+            </div>
+                     <!-----------------------------------departamento---------------------------------------->
+               <div class="c-e-p-h-datos">
+                <div class="datos">
+                    <h2>Codigo Postal</h2>
+                    <div class="conteiner-h2-i">
+                        <input type="text" class="sinborde" placeholder="Codigo Postal " name="codigopostal"
+                            #codigopostal="ngModel" [(ngModel)]="Modelo.CodigoPostal" required maxlength="5">
+
+                    </div>
+                    <div class="conteiner-alert">
+                        <div class="datoAlerta" *ngIf="codigopostal.dirty && codigopostal.hasError('required')">Campo requerido</div>
+                        <div class="datoAlerta" *ngIf="codigopostal.hasError('minlength')  ">maximo 4 caracteres</div>
+                        <div class="datocompletado" *ngIf="codigopostal.valid">Completado</div>
+                    </div>
+
+                </div>
+            </div>
+                             
+       
+            <div class="dropbox">
+                <app-dropzone (base64Ready)="onBase64Ready($event)" (formatError)="formatError()"></app-dropzone>
+            </div>
+
+<!---------------------------------------------------------------------------------------------------------------------->
+            <div class="c-e-p-h-datos">
+                <div id="datos-f">
+                    <button id="datos-p-l" type="submit " (click)="  ComplementarInfo() " [disabled]="addForm.invalid">
+                        Actualizar</button>
+                        <button id="datos-p-l" (click)="cancelPets()"> Cancelar</button>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </form>
+

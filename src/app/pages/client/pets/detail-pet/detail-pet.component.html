@@ -1,0 +1,291 @@
+<div class="conteiner frame">
+
+    <div class="conteiner-a">
+        <div class="conteiner-a-i-h" (click)="pets()">
+            <i class="	fas fa-arrow-left"></i>
+            <h2>Mascotas</h2>
+        </div>
+    </div>
+
+    <form #editForm="ngForm" class="e-p-option" style="max-width: 100%; max-height: 90%; display: flex;">
+
+        <div class="" style="overflow-y: scroll; width: 100%; background-color: #ceeced;">
+            <div id="">
+                <h2 style="font-size: 25px;padding: 30px">Editá a tu mascota</h2>
+                <!-- <p>Puedes modificar los datos de tu mascota </p>   -->
+            </div>
+
+            <div id="subContainer" class="row" style="width: 100%;">
+                <!-----------------------------------imagen---------------------------------------->
+                <div class="col-8" style="background-color: #a8c3ff6e; padding-top: 10px; padding-left: 5%; border: solid 1px navy; border-radius: 0px 10px 10px 0px;">
+                    <!-- <div class="c-e-p-h-datos" style="justify-content: center;">
+
+                    <div class="datos" style="display: none;">
+                        <h2>Imagen de perfil</h2>
+                        <div class="conteiner-h2-i">
+                            <input id="inputarchivo" type="file" class="sinborde" name="image" [(ngModel)]="mascota.image"
+                                (change)="fileEvent($event)" style="display: none;">
+                            <label for="inputarchivo" id="labelarchivo">Foto de tu mascota
+                                <div id="icona-photo">
+                                    <i class=" 	fa fa-camera-retro" *ngIf="!mascota.image"></i>
+                                    <img id="labelarchivo" src={{mascota.image}} alt="" *ngIf="mascota.image">
+                                    <img id="labelarchivo" src={{file}} alt="" *ngIf="file">
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div> -->
+                    <!-----------------------------------nombre---------------------------------------->
+                    <div class="" style="">
+                        <div class="" style="padding-left: 30px;">
+                            <div class="" style="display: inline-block;
+                            width: 30%;">Nombre</div>
+                            <div class="" style="display: inline;">
+                                <input type="text" class="" placeholder="Nombre de tu mascota" name="name"
+                                    [(ngModel)]="mascota.nombre" #name="ngModel" required minlength=3 style="width: 200px;">
+                                <div class="datoAlerta" *ngIf="name.dirty && name.hasError('required')">Campo requerido
+                                </div>
+                                <div class="datoAlerta" *ngIf="name.hasError('minlength')  ">Minimo 3 caracteres</div>
+                                <div class="datocompletado" *ngIf="name.valid">Completado</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="c-e-p-h-datos" style="justify-content: center;">
+                    <div class="datos" style="height: 70%;">
+                        <div class="key">Nombre</div>
+                        <div class="conteiner-h2-i val">
+                            <input type="text" class="sinborde" placeholder="Nombre de tu mascota" name="name"
+                                [(ngModel)]="mascota.nombre" #name="ngModel" required minlength=3>
+                            <div class="datoAlerta" *ngIf="name.dirty && name.hasError('required')">Campo requerido</div>
+                            <div class="datoAlerta" *ngIf="name.hasError('minlength')  ">Minimo 3 caracteres</div>
+                            <div class="datocompletado" *ngIf="name.valid">Completado</div>
+                        </div>
+                    </div>
+                </div> -->
+
+                    <!-----------------------------------raza---------------------------------------->
+                    <!-- <div class="" style="">
+                        <div class="" style="padding-left: 30px;">
+                            <div class="" style="    display: inline-block;
+                            width: 30%;">Raza</div>
+                            <div class="" style="display: inline;">
+                                <select style="padding: 10px;
+                                margin-bottom: 15px;
+                                border: 1px solid #ddd;
+                                border-radius: 5px;
+                                font-size: 14px;
+                                width: 200px;" id="pregunta" name="raza" [(ngModel)]="mascota.idTipoAnimalTipoRaza"
+                                    class="sinborde" #raza="ngModel">
+                                    <option value="" disabled selected>Selecciona una Raza</option>
+                                    <option [selected]="getRaza(raza)" *ngFor="let raza of razas" [value]="raza.id">
+                                        {{raza.descripcion}}</option>
+                                </select>
+
+                                <div class="datoAlerta" *ngIf="raza.dirty && raza.hasError('required')">Campo requerido
+                                </div>
+                                <div class="datocompletado" *ngIf="raza.valid">Completado</div>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <!-----------------------------------color---------------------------------------->
+                    <div class="" style="">
+                        <div class="" style="padding-left: 30px;">
+                            <div class="" style="    display: inline-block;
+                            width: 30%;">Color</div>
+                            <div class="" style="display: inline;">
+                                <input type="text" style="margin-bottom: 0px !important; width: 200px;" class="sinborde"
+                                    placeholder="Color de tu mascota" name="color" #color="ngModel"
+                                    [(ngModel)]="mascota.color" required minlength="3">
+                                <div class="datoAlerta" *ngIf="color.dirty && color.hasError('required')">Campo
+                                    requerido</div>
+                                <div class="datoAlerta" *ngIf="color.hasError('minlength')  ">Minimo 3 caracteres</div>
+                                <div class="datocompletado" *ngIf="color.valid">Completado</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-----------------------------------fechanaciemiento---------------------------------------->
+                    <div class="" style="">
+                        <div class="" style="padding-left: 30px; padding-top: 10px;">
+                            <div class="" style="    display: inline-block;
+                            width: 30%;">Fecha de nacimiento</div>
+                            <div class="" style="display: inline;">
+                                <input id="fn" type="date" style="margin-bottom: 0px !important; width: 200px;" class="sinborde"
+                                    name="fechanacimiento" [(ngModel)]="mascota.fechaNacimiento"
+                                    #fechanacimiento="ngModel" required>
+                                <div class="datoAlerta"
+                                    *ngIf="fechanacimiento.dirty && fechanacimiento.hasError('required')">
+                                    Campo requerido</div>
+                                <div class="datocompletado" *ngIf="fechanacimiento.valid">Completado</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-----------------------------------specie-------------------------------------
+                <div class="c-e-p-h-datos">
+                    <div  class="datos" >
+                        <h2>Especie</h2>
+                        <div class="conteiner-h2-i">
+                            
+                            <div class=h2-i-e>
+                                <label><input type="radio" id="specie" value="perro"   name="specie" [(ngModel)]="mascota.specie"   #specie="ngModel"  required/> Perro</label>
+                                 </div>
+                            <div class=h2-i-e>
+                                <label ><input type="radio" id="specie" value="gato"  name="specie" [(ngModel)]="mascota.specie"  #specie="ngModel"  required/> Gato</label>
+                            </div>
+                            <div class="datoAlerta"  *ngIf="specie.dirty && specie.hasError('required')">Campo requerido</div>
+                            <div class="datocompletado" *ngIf="specie.valid">Completado</div>
+                        </div>
+                    </div>
+                </div>
+    --->
+                    <!-----------------------------------genero---------------------------------------->
+                    <div>
+                        <div style="padding-left: 30px;">
+                            <div class="" style="display: inline-block; width: 30%; padding-top: 10px;">Género</div>
+                            <div class="" style="display: inline;">
+                                <div style="display: inline;">
+                                    <label style="margin-right: 30px;">
+                                        <input style="margin-bottom: 0px !important;" type="radio" id="generoM"
+                                            value="true" name="genero" [formControl]="generoFormControl"
+                                             (click)="setSex(1)" [checked]="mascota.idSexo == 1"/>
+                                        Macho
+                                    </label>
+                                </div>
+                                <div style="display: inline;">
+                                    <label>
+                                        <input style="margin-bottom: 0px !important; margin-right: 30px" type="radio" id="generoF"
+                                            value="false" name="genero" [formControl]="generoFormControl" 
+                                             (click)="setSex(2)"[checked]="mascota.idSexo == 2" />
+                                        Hembra
+                                    </label>
+                                </div>
+                                <div class="datoAlerta"
+                                    *ngIf="generoFormControl.dirty && generoFormControl.hasError('required')">Campo
+                                    requerido</div>
+                                <div class="datocompletado" *ngIf="generoFormControl.valid">Completado</div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <!-----------------------------------castrado---------------------------------------->
+                    <div>
+                        <div style="padding-left: 30px;">
+                            <div class="" style="    display: inline-block;
+                            width: 30%;">Esterilizado</div>
+                            <div class="" style="display: inline;">
+                                <div style="display: inline;">
+                                    <label style="margin-right: 63px;">
+                                        <input style="margin-bottom: 0px !important;" type="radio" id="esterilizadoSi"
+                                             name="esterilizado" [formControl]="esterilizadoFormControl"
+                                             [checked]="mascota.estaCastrado" (click)="setEst(true)"  [value]="true"/>
+                                        SI
+                                    </label>
+                                </div>
+                                <div style="display: inline;">
+                                    <label style="margin-right: 30px !important">
+                                        <input style="margin-bottom: 0px !important;" type="radio" id="esterilizadoNo"
+                                             name="esterilizado" [formControl]="esterilizadoFormControl"
+                                             [checked]="!mascota.estaCastrado"(click)="setEst(false)"  [value]="false"/>
+                                        NO
+                                    </label>
+                                </div>
+                                <div class="datoAlerta"
+                                    *ngIf="esterilizadoFormControl.dirty && esterilizadoFormControl.hasError('required')">
+                                    Campo requerido</div>
+                                <div class="datocompletado" *ngIf="esterilizadoFormControl.valid">Completado</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-----------------------------------adoptado--------------------------------------
+                   <div class="c-e-p-h-datos">
+                    <div  class="datos"  >
+                        <h2>Adoptado</h2>
+                        <div class="conteiner-h2-i">
+    
+                        <div class=h2-i-e>
+                                <label><input type="radio" id="adoptado" value="true"    name="adoptado" [(ngModel)]="mascota.adoptado"   #adoptado="ngModel"  required    /> SI</label>
+                              </div>
+                              <div class=h2-i-e>
+                                <label ><input type="radio" id="adoptado"  value="false"  name="adoptado" [(ngModel)]="mascota.adoptado"  #adoptado="ngModel"  required    /> NO</label>
+                              </div>
+                              <div class="datoAlerta"  *ngIf="adoptado.dirty && adoptado.hasError('required')">Campo requerido</div>
+                              <div class="datocompletado" *ngIf="adoptado.valid">Completado</div>
+                        </div>
+                    </div>
+                </div>
+                -->
+                    <!-----------------------------------chiprastreo---------------------------------------->
+                    <div>
+                        <div style="padding-left: 30px;">
+                            <div class="" style="    display: inline-block;
+                            width: 30%;">Chip de rastreo</div>
+                            <div class="" style="display: inline;">
+                                <div style="display: inline;">
+                                    <label style="margin-right: 63px;">
+                                        <input style="margin-bottom: 0px !important;" type="radio" id="chiprastreoSi"
+                                            name="chiprastreo" [formControl]="chipRastreoFormControl"
+                                              (click)="setChip(true)" [checked]="mascota.chipRastreo" [value]="true" />
+                                        SI
+                                    </label>
+                                </div>
+                                <div style="display: inline;">
+                                    <label style="margin-right: 30px">
+                                        <input style="margin-bottom: 0px !important;" type="radio" id="chiprastreoNo"
+                                             name="chiprastreo" [formControl]="chipRastreoFormControl"
+                                             (click)="setChip(false)"  [checked]="!mascota.chipRastreo"  [value]="false"/>
+                                        NO
+                                    </label>
+                                </div>
+                                <div class="datoAlerta"
+                                    *ngIf="chipRastreoFormControl.dirty && chipRastreoFormControl.hasError('required')">
+                                    Campo requerido</div>
+                                <div class="datocompletado" *ngIf="chipRastreoFormControl.valid">Completado</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-4">
+                    <app-dropzone [initialImageBase64]="this.mascota.fotoPacienteBase64"
+                        (base64Ready)="onBase64Ready($event)" (formatError)="formatError()"></app-dropzone>
+
+                </div>
+            </div>
+
+
+
+
+            <!---------------------------------------------------------------------------------------------------------------------->
+            <div class="row" style="width: 200px; margin: 15px; margin-left: auto;
+            margin-right: auto;">
+                <button  type="submit " (click)=" editPet() " [disabled]="editForm.invalid">Editar</button>
+                <!-- <button  (click)="cancelPets()"> Cancelar</button> -->
+                <!-- <div class="col-8">
+                    <div class="dropbox">
+                        <app-dropzone [initialImageBase64]="this.mascota.fotoPacienteBase64" (base64Ready)="onBase64Ready($event)" (formatError)="formatError()"></app-dropzone>
+                    </div>
+                </div> -->
+                <!-- <div class="col-4">
+                    <button type="submit " (click)=" editPet() " [disabled]="editForm.invalid">Editar</button>
+                </div> -->
+            </div>
+            <!-- <div class="c-e-p-h-datos" style="justify-content: center; width: 100%;">
+
+                <div id="datos-f">
+                    <button id="datos-p-l" type="submit " (click)=" editPet() " [disabled]="editForm.invalid">
+                        Editar</button>
+                    <button id="datos-p-l" (click)="cancelPets()"> Cancelar</button>
+                </div>
+            </div> -->
+
+        </div>
+
+    </form>
+
+
+</div>

@@ -1,0 +1,228 @@
+<div class="conteiner mycard">
+
+    <div class="conteiner-a">
+        <div class="conteiner-a-i-h" (click)="pets()">
+            <i class="	fas fa-arrow-left"></i>
+            <h2>Mascotas</h2>
+        </div>
+    </div>
+
+    <form #addForm="ngForm" class="e-p-option">
+        <div class="formDiv" >
+            <div id="datos" class="titl">
+                <h2 class="petAdd">Agrega a tu mascota</h2>
+            </div>
+
+            <!-----------------------------------imagen---------------------------------------->
+            <div class="c-e-p-h-datos" style="display: none;">
+                <div class="datos">
+                    <h2>Imagen de perfil</h2>
+                    <div class="conteiner-h2-i">
+                        <input id="inputarchivo" type="file" class="sinborde" [(ngModel)]="Modelo.Image"
+                            (change)="fileEvent($event)" style="display: none;">
+                        <label for="inputarchivo" id="labelarchivo">
+                            <div class="conteiner-l-t">
+                                Selecciona una foto de tu mascota
+                            </div>
+
+                            <div id="icona-photo">
+                                <i class=" 	fa fa-camera-retro" *ngIf="!file"></i>
+                                <img id="labelarchivo" src={{file}} alt="" *ngIf="file">
+                            </div>
+                        </label>
+                    </div>
+                    <div class="conteiner-alert">
+
+                    </div>
+                </div>
+            </div>
+
+            <!-----------------------------------nombre---------------------------------------->
+            <div class="c-e-p-h-datos">
+                <div class="datos">
+                    <h2>Nombre</h2>
+                    <div class="conteiner-h2-i">
+                        <input type="text" class="sinborde" placeholder="Nombre de tu mascota" name="name"
+                            [(ngModel)]="Modelo.Nombre" #name="ngModel" required minlength=3>
+
+                    </div>
+                    <div class="conteiner-alert">
+                        <div class="datoAlerta" *ngIf="name.dirty && name.hasError('required')">Campo requerido</div>
+                        <div class="datoAlerta" *ngIf="name.hasError('minlength')  ">Minimo 3 caracteres</div>
+                        <div class="datocompletado" *ngIf="name.valid ">Completado</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-----------------------------------Tipoanimal---------------------------------------->
+            <div class="c-e-p-h-datos">
+                <div class="datos">
+                    <h2>Especie</h2>
+                    <div class="conteiner-h2-i">
+                        <select name="tipoAnimal" [(ngModel)]="Modelo.TipoAnimal" class="sinborde" #tipoAnimal="ngModel"
+                            (change)="onSelect($any($event.target).value)">
+                            <option value="" disabled selected>Selecciona la Especie</option>
+                            <option *ngFor="let tipoAnimal of arrtipoanimal" [value]='tipoAnimal.id'>
+                                {{tipoAnimal.descripcion}}</option>
+                        </select>
+                    </div>
+                    <div class="conteiner-alert">
+                        <div class="datoAlerta"
+                            *ngIf="tipoAnimal.dirty &&  tipoAnimal.touched && tipoAnimal.hasError('required')">Campo
+                            requerido</div>
+                        <div class="datocompletado" *ngIf="tipoAnimal.dirty &&  tipoAnimal.touched ">Completado</div>
+                    </div>
+
+                </div>
+            </div>
+            <!-----------------------------------raza---------------------------------------->
+            <div class="c-e-p-h-datos">
+                <div class="datos">
+                    <h2>Raza</h2>
+                    <div class="conteiner-h2-i">
+                        <select name="raza" [(ngModel)]="Modelo.IdTipoAnimalTipoRaza" class="sinborde" #raza="ngModel">
+                            <option value="" disabled selected>Selecciona una Raza</option>
+                            <option *ngFor="let razas of arrRazas" [value]='razas.idTipoAnimalTipoRAza'>
+                                {{razas.tipoRazaDesCripcion}}</option>
+                        </select>
+                    </div>
+                    <div class="conteiner-alert">
+                        <div class="datoAlerta" *ngIf="raza.dirty &&  raza.touched && raza.hasError('required')">Campo
+                            requerido</div>
+                        <div class="datocompletado" *ngIf="raza.dirty &&  raza.touched ">Completado</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-----------------------------------color---------------------------------------->
+            <div class="c-e-p-h-datos">
+                <div class="datos">
+                    <h2>Color</h2>
+                    <div class="conteiner-h2-i">
+                        <input type="text" class="sinborde" placeholder="Color de tu mascota" name="color"
+                            #color="ngModel" [(ngModel)]="Modelo.Color" required minlength="3">
+
+                    </div>
+                    <div class="conteiner-alert">
+                        <div class="datoAlerta" *ngIf="color.dirty && color.hasError('required')">Campo requerido</div>
+                        <div class="datoAlerta" *ngIf="color.hasError('minlength')  ">Minimo 3 caracteres</div>
+                        <div class="datocompletado" *ngIf="color.valid">Completado</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-----------------------------------fechanaciemiento---------------------------------------->
+            <div class="c-e-p-h-datos">
+                <div class="datos">
+                    <h2>Fecha de nacimiento</h2>
+                    <div class="conteiner-h2-i">
+                        <input type="date" class="sinborde" name="fechanacimiento" [(ngModel)]="Modelo.FechaNacimiento"
+                            #fechanacimiento="ngModel" required>
+                    </div>
+                    <div class="conteiner-alert">
+                        <div class="datoAlerta" *ngIf="fechanacimiento.dirty && fechanacimiento.hasError('required')">
+                            Campo requerido</div>
+                        <div class="datocompletado" *ngIf="fechanacimiento.valid">Completado</div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-----------------------------------genero---------------------------------------->
+            <div class="c-e-p-h-datos">
+                <div class="datos">
+                    <h2>Genero</h2>
+
+                    <div class="conteiner-h2-i">
+                        <div class=h2-i-e>
+                            <label><input (click)="setSexo(1)" type="radio" id="genero" value="true" name="genero"
+                                    [(ngModel)]="Modelo.IdSexo" #genero="ngModel" required /> Macho</label>
+                        </div>
+                        <div class=h2-i-e>
+                            <label><input (click)="setSexo(2)" type="radio" id="genero" value="false" name="genero"
+                                    [(ngModel)]="Modelo.IdSexo" #genero="ngModel" required /> Hembra</label>
+                        </div>
+                    </div>
+
+                    <div class="conteiner-alert">
+                        <div class="datoAlerta" *ngIf="genero.dirty && genero.hasError('required')">Campo requerido
+                        </div>
+                        <div class="datocompletado" *ngIf="genero.valid">Completado</div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-----------------------------------castrado---------------------------------------->
+            <div class="c-e-p-h-datos">
+                <div class="datos">
+                    <h2>Esterilizado </h2>
+                    <div class="conteiner-h2-i">
+                        <div class=h2-i-e>
+                            <label><input type="radio" id="esterilizado" value="true" name="esterilizado"
+                                    [(ngModel)]="Modelo.EstaCastrado" #esterilizado="ngModel" required /> SI</label>
+                        </div>
+                        <div class=h2-i-e>
+                            <label><input type="radio" id="esterilizado" value="false" name="esterilizado"
+                                    [(ngModel)]="Modelo.EstaCastrado" #esterilizado="ngModel" required /> NO</label>
+                        </div>
+                    </div>
+                    <div class="conteiner-alert">
+                        <div class="datoAlerta" *ngIf="esterilizado.dirty && esterilizado.hasError('required')">Campo
+                            requerido</div>
+                        <div class="datocompletado" *ngIf="esterilizado.valid">Completado</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-----------------------------------chiprastreo---------------------------------------->
+            <div class="c-e-p-h-datos">
+                <div class="datos">
+                    <h2>Chip de rastreo </h2>
+                    <div class="conteiner-h2-i">
+
+                        <div class=h2-i-e>
+                            <label><input type="radio" id="chiprastreo" value="true" name="chiprastreo"
+                                    [(ngModel)]="Modelo.ChipRastreo" #chiprastreo="ngModel" required /> SI</label>
+                        </div>
+                        <div class=h2-i-e>
+                            <label><input type="radio" id="chiprastreo" value="false" name="chiprastreo"
+                                    [(ngModel)]="Modelo.ChipRastreo" #chiprastreo="ngModel" required /> NO</label>
+                        </div>
+
+                    </div>
+
+                    <div class="conteiner-alert">
+                        <div class="datoAlerta" *ngIf="chiprastreo.dirty && chiprastreo.hasError('required')">Campo
+                            requerido</div>
+                        <div class="datocompletado" *ngIf="chiprastreo.valid">Completado</div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropbox">
+                <app-dropzone (base64Ready)="onBase64Ready($event)" (formatError)="formatError()"></app-dropzone>
+            </div>
+
+            <!---------------------------------------------------------------------------------------------------------------------->
+            <div class="c-e-p-h-datos">
+                <div id="datos-f">
+                    <button id="datos-p-l" type="submit " (click)=" addPet() " [disabled]="addForm.invalid">
+                        Aceptar</button>
+                    <button id="datos-p-l" (click)="cancelPets()"> Cancelar</button>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </form>

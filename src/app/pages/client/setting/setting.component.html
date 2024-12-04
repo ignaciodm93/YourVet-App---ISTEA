@@ -1,0 +1,142 @@
+<body class="vet-body">
+    <div class="container mt-4 cont ovf" style="height: 94% !important; width: 82%;">
+      <h2>Historiales clínicos</h2>
+      <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+  
+        <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+          <th mat-header-cell *matHeaderCellDef> {{trad(column)}} </th>
+          <td mat-cell *matCellDef="let element"> {{datePipeMe(element[column], column)}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="expand">
+          <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+          <td mat-cell *matCellDef="let element" style="width: 40px; margin-left: 29%;" class="buttons">
+            <button mat-icon-button aria-label="expand row"
+              (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
+  
+              <mat-icon *ngIf="expandedElement === element">keyboard_arrow_up</mat-icon>
+  
+              <mat-icon *ngIf="expandedElement !== element">keyboard_arrow_down</mat-icon>
+              
+            </button>
+  
+            <button mat-icon-button (click)="printRegister(element);  $event.stopPropagation()">
+              <mat-icon>cloud_download</mat-icon>
+            </button>    
+          </td>
+          <button>
+            <i class="fa-solid fa-file-arrow-down"></i>
+          </button>
+          
+        </ng-container>
+  
+  
+        <ng-container matColumnDef="expandedDetail">
+          <td style="background-color: #d9e6f0;" mat-cell *matCellDef="let element"
+            [attr.colspan]="columnsToDisplayWithExpand.length">
+            <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+  
+  
+              <div class="container cc">
+                <div class="row">
+                  <!-- Vacunas -->
+                  <div class="col-md-12">
+                      <h6>Vacunas:</h6>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Fecha de aplicación</th>
+                        <th scope="col">Fecha de vencimiento</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let v of element.historialClinicoTipoVacunas">
+                        <td style="padding-bottom: 5px;">{{showVacunaName(v.idTipoVacuna)}}</td>
+                        <td style="padding-bottom: 5px;">{{convertirFormatoFecha(v.fechaAplicacion)}}</td>
+                        <td style="padding-bottom: 5px;">{{convertirFormatoFecha(v.fechaVencimiento)}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                    </div>
+                  </div>
+  
+                  <!-- Practicas -->
+                  <div class="col-md-12">
+                    <h6>Practicas:</h6>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Fecha de aplicación</th>
+                        <th scope="col">Fecha de vencimiento</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let p of element.historialClinicoTipoPracticas">
+                        <td style="padding-bottom: 5px;">{{showPracticaName(p.idTipoPractica)}}</td>
+                        <td style="padding-bottom: 5px;">{{convertirFormatoFecha(p.fechaAplicacion)}}</td>
+                        <td style="padding-bottom: 5px;">{{convertirFormatoFecha(p.fechaVencimiento)}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </div>
+                  <!-- Antiparasitarios -->
+                  <div class="col-md-12">
+                    <h6>Antiparasitarios:</h6>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Fecha de aplicación</th>
+                        <th scope="col">Fecha de vencimiento</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let p of element.historialClinicoTipoAntiparasitarios">
+                        <td style="padding-bottom: 5px;">{{showAntiparasitarioName(p.idTipoAntiparasitario)}}</td>
+                        <td style="padding-bottom: 5px;">{{convertirFormatoFecha(p.fechaAplicacion)}}</td>
+                        <td style="padding-bottom: 5px;">{{convertirFormatoFecha(p.fechaVencimiento)}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </div>
+                  <!-- Observaciones -->
+                  <div class="col-md-12">
+                    <h6>Enfermedades y dolencias:</h6>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Dolencia</th>
+                        <th scope="col">Tratamiento</th>
+                        <th scope="col">Observación</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let p of element.historialClinicoEnfermedadesYDolencias">
+                        <td style="padding-bottom: 5px;">{{showEnfermedadName(p.idTipoEnfermedad)}}</td>
+                        <td style="padding-bottom: 5px;">{{p.dolencia}}</td>
+                        <td style="padding-bottom: 5px;">{{p.tratamiento}}</td>
+                        <td style="padding-bottom: 5px;">{{p.observacion}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </div>          
+              </div>
+            </div>
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+        <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;" class="example-element-row"
+          [class.example-expanded-row]="expandedElement === element"
+          (click)="expandedElement = expandedElement === element ? null : element">
+        </tr>
+        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+        
+      </table>
+      <mat-paginator (page)="recall($event)" [hidePageSize]="true" [length]="dataSource.length" [pageSizeOptions]="[10]" [pageSize]="10" [length]="dataSource.length" [pageIndex]="indx" [disabled]="false">
+  </mat-paginator>
+    </div>
+  </body>

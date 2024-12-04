@@ -1,0 +1,25 @@
+.wrapper{
+    background-image: url(../../../assets/images/enviadoConExito.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+   
+    height: 100vh;
+    width: auto;
+}
+
+.box{
+    /* border: 1px solid; */
+    width: 400px;
+    height: 360px;
+    /* height: 30vh; */
+}
+
+.done{
+    color: white;
+    background: green;
+    font-size: 150px;
+    border-radius: 50%;
+    width: auto;
+    height: auto;
+}

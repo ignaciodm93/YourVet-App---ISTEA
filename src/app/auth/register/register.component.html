@@ -1,0 +1,64 @@
+<body>
+
+    <span class="close" onclick="closeRegisterForm()">&times;</span>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmitRegister()" id="registrationForm">
+
+        <div class="logo-and-text">
+            <a href="index.html"><img src="../../../assets/images/logo.png" alt="Logo" class="overlay-logo"></a>
+            <span class="your-vet-text">YourVet</span>
+        </div>
+
+        <label for="nombreUsuario">Nombre de Usuario:</label>
+        <input type="text" id="nombreUsuario" formControlName="nombreUsuario" required>
+
+        <label for="codArea">Código de Área:</label>
+        <select id="codArea" formControlName="codArea" required>
+            <option *ngFor="let cod of codigosArea" [value]="cod.id">{{cod.descripcion}}</option>
+        </select>
+
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" formControlName="telefono" required pattern="^[1-9]\d{6,10}$">
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" formControlName="nombre" required>
+
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" formControlName="apellido" required>
+
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" formControlName="email" required autocomplete="username">
+
+        <label for="clave">Contraseña:</label>
+        <input type="password" id="clave" formControlName="clave" required minlength="6" maxlength="12"
+            autocomplete="current-password">
+
+        <label for="verificacionClave">Verificación de Contraseña:</label>
+        <input type="password" id="verificacionClave" formControlName="verificacionClave" required
+            autocomplete="current-password">
+
+        <label for="pregunta">Pregunta de Seguridad:</label>
+        <select id="pregunta" formControlName="pregunta" required>
+            <option *ngFor="let preguntas of preguntasSeguridad" [value]="preguntas.id">{{preguntas.descripcion}}
+            </option>
+        </select>
+
+        <label for="respuesta">Respuesta de Seguridad:</label>
+        <input type="text" id="respuesta" formControlName="respuesta" required>
+
+        <label for="tipoCliente">Tipo de Cliente:</label>
+        <div *ngFor="let opcion of opciones">
+            <div><input type="radio" id="{{opcion.valor}}" [(ngModel)]="opcionSeleccionadaTipoCliente" [value]="opcion.valor"
+                    name="opciones" (change)="setValor(opcion.valor)" class="radio-input">{{ opcion.etiqueta }}</div>
+        </div>
+        <br>
+        <button type="submit">Registrarse</button>
+
+        <button type="button" id="btnVolver" (click)="this.volverHome()">Volver</button>
+    </form>
+</body>
+<ng-container>
+    <mat-form-field style="display: none;">
+        <i class="fa-solid fa-user-doctor"></i>
+        <input type="number" [(ngModel)]="durationInSeconds" matInput>
+    </mat-form-field>
+    </ng-container>

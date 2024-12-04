@@ -1,0 +1,128 @@
+<body class="vet-body">
+    <div class="container mt-4">
+        <div class="container innerContainer">
+            <div class="row" style="    margin-top: -15px;">
+                <div class="col-8 sticked">               
+                    <div class="contt">
+                        <div class="row" style="margin-top: -10px; margin-bottom: 5px;">
+                            <div class="col-4">
+                                <div class="dropdown">
+                                    <span>Veterinarias:</span>
+                                    <select [disabled]="!tieneMascotas" style="border-radius: 0px; height: 30px;" class="inputForm btn btn-light" [(ngModel)]="vetSeleccionada"
+                                            name="establecimientoSeleccionado" (change)="setVeterinarias()">
+                                        <option *ngFor="let vet of veterinarias" [value]="vet.id">{{vet.nombreVeterinaria}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="dropdown">
+                                    <span>Establecimientos:</span>
+                                    <select [disabled]="!tieneMascotas" style="border-radius: 0px; height: 30px;" class="inputForm btn btn-light" [(ngModel)]="establecimientoSeleccionado"
+                                            name="establecimientoSeleccionado" (change)="setEstablecimiento()">
+                                        <option *ngFor="let establecimiento of establecimientos" [value]="establecimiento.id">{{establecimiento.tipoLocalidadDescripcion}}, {{establecimiento.calle}} {{establecimiento.numero}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="dropdown">
+                                    <span>Profesional:</span>
+                                    <select [disabled]="profesionalDisabled" style="border-radius: 0px; height: 30px;" class="inputForm btn btn-light" [(ngModel)]="profesionalSeleccionado"
+                                            name="profesionalSeleccionado" (change)="setProfesional()">
+                                        <option *ngFor="let profesional of profesionales" [value]="profesional.id">{{profesional.nombre}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    <full-calendar #fullcalendar [options]='calendarOptions'>
+                        <ng-template #eventContent let-arg>
+                            <b>{{ arg.timeText }}</b>
+                            <i>{{ arg.event.title }}</i>
+                        </ng-template>
+                    </full-calendar>
+                    </div>
+                </div>
+                <div class="col-4 connt2">
+                    <h5>Solicitar un nuevo turno</h5>
+                    <form style="margin-bottom: 10px;">
+                        <div class="form-group">
+                            <label for="campo1" *ngIf="tieneMascotas">Seleccione una mascota:</label>
+                            <label for="campo1" *ngIf="!tieneMascotas">No tiene mascotas registradas.</label>
+                            <select [disabled]="!tieneMascotas" class="inputForm btn btn-light"
+                                    [(ngModel)]="mascotaSeleccionada" name="mascotaSeleccionada">
+                                    <option *ngFor="let mascota of mascotas; let i = index" [value]="mascota.id">{{mascota.nombre}}</option>
+                            </select>
+                        </div>
+                        <!-- <div class="form-group">
+                            <label for="campo2">Id del especialista:</label>
+                            <input (blur)="setValue('name', $event)" type="text" class="form-control" id="campo2">
+                        </div> -->
+                        <div class="row" style="margin-top: 5px">
+                            <div class="col-6">
+                                <select [disabled]="!tieneMascotas" class="inputForm btn btn-light dropdown-toggle" (change)="setAno($event)"
+                                    [(ngModel)]="anoSeleccionado" name="anoSeleccionado" (ngModelChange)="llenarDias()">
+
+                                    <option *ngFor="let ano of anos" [value]="ano">{{ano}}</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <select [disabled]="!tieneMascotas" class="inputForm btn btn-light" (change)="setMes($event)"
+                                    [(ngModel)]="mesSeleccionado" name="mesSeleccionado" (ngModelChange)="llenarDias()">
+
+                                    <option *ngFor="let mes of meses; let i = index" [value]="i">{{mes}}</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <select [disabled]="!tieneMascotas" class="inputForm btn btn-light" [(ngModel)]="diaSeleccionado"
+                                    name="diaSeleccionado" (change)="setDia($event)">
+
+                                    <option *ngFor="let dia of dias" [value]="dia.numero">{{dia.nombre}}</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <div>
+                                    <select [disabled]="!tieneMascotas" class="inputForm btn btn-light" (change)="setHorario($event)"
+                                        [(ngModel)]="horarioSeleccionado" name="horarioSeleccionado">
+                                        <option *ngFor="let horario of horarios" [value]="horario">{{horario}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="errorMsg" *ngIf="turnoOcupado">
+                            *El turno se encuentra tomado, por favor escoja otro.
+                        </div>
+                        <button id="confirmButton" (click)="createNuevoTurno()" type="submit" class="btn btn-primary">Confirmar</button>
+
+                        
+                    </form>
+                    <mat-accordion>
+                        <mat-expansion-panel (opened)="panelOpenState = true"
+                                             (closed)="panelOpenState = false" class="matExp">
+                          <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <i style="display: inline;" class="fa-solid fa-magnifying-glass"></i>
+                            </mat-panel-title>
+                            <mat-panel-description>
+                              Buscar turnos por mascota
+                            </mat-panel-description>
+                          </mat-expansion-panel-header>
+                          <label class="labelSearch" for="campo1" *ngIf="tieneMascotas">Seleccione una mascota:</label>  
+                            <select (change)="buscarTurnosPorMascota()" [disabled]="!tieneMascotas" class="inputForm btn btn-light lab"
+                                    [(ngModel)]="mascotaSeleccionadaParaBuscar" name="mascotaSeleccionadaParaBuscar">
+                                    <option *ngFor="let mascota of mascotas; let i = index" [value]="mascota.id">{{mascota.nombre}}</option>
+                            </select>
+                        </mat-expansion-panel>
+                      </mat-accordion>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<modal [modalTitle]="modalTitle" [setInputText]="showInputText" [isSuccessDisabled]="isSuccessDisabled" [confirmTxt]="'Ver en el día'" [cancelTxt]="'Cerrar'" #modal
+    (onConfirm)="onConfirmModal()" [actionFsTxt]="firstActionTxtBtn" [actionScTxt]="secondActionTxtBtn" (onAction)="action($event)" (onActionComplete)="actionComplete($event)">
+</modal>
+<ng-container>
+    <mat-form-field style="display: none;">
+        <i class="fa-solid fa-user-doctor"></i>
+        <input type="number" [(ngModel)]="durationInSeconds" matInput>
+    </mat-form-field>
+    </ng-container>
